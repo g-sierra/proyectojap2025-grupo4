@@ -1,10 +1,10 @@
 body {
     margin: 0;
-    height: 100vh; /* ocupa toda la altura de la ventana */
+    height: 100vh; 
     display: flex;
-    justify-content: center; /* centra horizontal */
-    align-items: center;     /* centra vertical */
-    background-color: #f4f4f4; /* fondo suave */
+    justify-content: center; 
+    align-items: center;     
+    background-color: #f4f4f4; 
     font-family: Arial, sans-serif;
 }
 
@@ -13,7 +13,7 @@ body {
     padding: 20px 30px;
     border-radius: 10px;
     box-shadow: 0px 4px 10px rgba(0,0,0,0.2);
-    width: 300px; /* ancho fijo */
+    width: 300px; 
 }
 
 .login-box form {
