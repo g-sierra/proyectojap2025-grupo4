@@ -5,6 +5,7 @@ function validarLogin() {
     let password = document.getElementById("password").value.trim();
 
     if (username && password) {
+        localStorage.setItem("usuario", username);
         window.location.href = "index.html";
     } else {
         alert("Debes ingresar un usuario y contraseña");
