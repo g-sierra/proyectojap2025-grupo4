@@ -6,7 +6,7 @@ fetch(URL)
     .then((response) => response.json())
     .then((data) => {
         galeria.innerHTML = ""; // Limpiar galería
-        data.products.slice(0, 4).forEach((producto) => {
+        data.products.forEach((producto) => {
             galeria.innerHTML += `
             <div class="producto">
               <img src="${producto.image}" alt="${producto.name}">
