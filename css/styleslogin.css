@@ -9,7 +9,7 @@ body {
 }
 
 .login-box {
-    background: white;
+    background: #f4f4f4;
     padding: 20px 30px;
     border-radius: 10px;
     box-shadow: 0px 4px 10px rgba(0,0,0,0.2);
@@ -27,7 +27,7 @@ body {
 }
 
 .login-box input{
-    background-color: #A3CFBB;
+    background-color:  #A3CFBB;
 }
 
 .login-box input,
@@ -62,3 +62,19 @@ footer {
     text-align: right;
 }
 
+#logo img {
+  display: block;            
+  max-width: 150px;         
+  height: auto;              
+  margin: 0 auto 20px auto;  
+}
+
+footer a {
+  color: #4CAF50; 
+  text-decoration: none;
+}
+
+footer a:hover {
+  color: #2e7d32; 
+  text-decoration: underline; 
+}
