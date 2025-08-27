@@ -39,3 +39,12 @@ let getJSONData = function(url){
         return result;
     });
 }
+
+
+// Redireccionar al login si la sesión no está iniciada (Desafiate Entrega 1)
+document.addEventListener("DOMContentLoaded", () => {
+    let usuario = localStorage.getItem("usuario");
+    if (!usuario){
+    window.location.href = "login.html";
+    }
+});
