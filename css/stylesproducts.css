@@ -1,28 +1,61 @@
+@media (max-width: 768px) { /*se agrega todo este codigo hasta la linea 26*/ 
+  .galeria {
+    max-width: 100%;
+    padding: 10px;
+    gap: 16px;
+  }
+  .producto {
+    width: 100%;
+    min-width: 0;
+    padding: 12px;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px;
+  }
+  .producto img {
+    width: 100%;
+    height: auto;
+    max-width: 220px;
+    margin: 0 auto;
+    display: block;
+  }
+  .info {
+    width: 100%;
+    text-align: left;
+  }
+}
 /* === Galería de productos === */
 .galeria {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
+  display: flex;      /*cambio*/   
+  flex-direction: column;    /*cambio*/   
+  flex-wrap: nowrap;       /*cambio*/   
+  overflow-x: unset;       /*cambio*/   
   gap: 30px;
   margin: auto;
   padding: 20px;
-  max-width: 1200px;
+   max-width: 600px;       /*cambio*/   
   background-color: rgba(255, 255, 255, 0.8);
   border-radius: 12px;
   backdrop-filter: blur(6px);
+   align-items: center;     /*cambio*/   
 }
 
 /* === Tarjetas de producto === */
 .producto {
+  display: flex;      /*cambio*/ 
+  align-items: center;   /*cambio*/ 
   background-color: #198754;
   border-radius: 12px;
   padding: 20px;
-  width: 220px;
-  text-align: center;
+   width: 420px;     /*cambio*/  
+  min-width: 320px; /*cambio*/ 
+  max-width: 100%;  /*cambio*/ 
+  text-align: left;
   box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
   transition: transform 0.3s ease, box-shadow 0.3s ease;
   color: #ffffff;
   text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.4);
+  gap: 18px;        /*cambio*/ 
 }
 
 .producto:hover {
@@ -32,18 +65,20 @@
 }
 
 .producto img {
-  width: 100%;
-  height: 140px;
+  width: 120px;        /*cambio*/        
+  height: 120px;       /*cambio*/        
   object-fit: cover;
   border-radius: 10px;
-  margin-bottom: 15px;
+  margin-bottom: 0;     /*cambio*/     
   border: 2px solid #479f76;
+  flex-shrink: 0;       /*cambio*/      
 }
 
 /* === Información del producto === */
 .info {
   text-align: left;
   font-size: 0.95rem;
+  flex: 1;          /*cambio*/     
 }
 
 .info strong {
