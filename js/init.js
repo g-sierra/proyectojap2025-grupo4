@@ -50,9 +50,10 @@ document.addEventListener("DOMContentLoaded", () => {
 
     // Agregar el nombre de usuario a la barra de navegación (Desafiate Entrega 2)
     let navbarList = document.querySelector("#navbarNav>ul");
+    let isProfile = window.location.pathname.endsWith("my-profile.html");
     navbarList.innerHTML += `
     <li class="nav-item">
-      <a class="nav-link" href="my-profile.html">${usuario}</a>
+      <a class="nav-link${isProfile ? " active" : ""}" href="my-profile.html">${usuario}</a>
     </li>
     `
 });
