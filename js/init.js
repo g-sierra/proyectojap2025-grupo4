@@ -47,4 +47,12 @@ document.addEventListener("DOMContentLoaded", () => {
     if (!usuario){
     window.location.href = "login.html";
     }
+
+    // Agregar el nombre de usuario a la barra de navegación (Desafiate Entrega 2)
+    let navbarList = document.querySelector("#navbarNav>ul");
+    navbarList.innerHTML += `
+    <li class="nav-item">
+      <a class="nav-link" href="my-profile.html">${usuario}</a>
+    </li>
+    `
 });
