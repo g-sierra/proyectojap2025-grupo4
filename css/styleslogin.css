@@ -73,7 +73,11 @@ body {
 }
 @media (min-width: 768px) and (max-width: 1024px) {
   .login-box {
-    max-width: 400px; 
-    padding: 30px 40px; 
+    width: 90%;          /* ancho relativo al contenedor */
+    max-width: 600px;    /* limite máximo */
+    padding: 40px 30px;  /* más grande por dentro */
+    margin: 0 auto;      /* centrado horizontal */
+    transform: scale(1.5); /* agranda toda la caja 1.5 veces */
+    transform-origin: top center; /* escala desde arriba, centrado */
   }
 }
