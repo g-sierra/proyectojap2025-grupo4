@@ -11,9 +11,9 @@ fetch(URL)
             <div class="producto">
               <img src="${producto.image}" alt="${producto.name}">
               <div class="info">
-                <div><strong>Nombre:</strong> ${producto.name}</div>
-                <div><strong>Descripción:</strong> ${producto.description}</div>
-                <div><strong>Precio:</strong> ${producto.currency} ${producto.cost}</div>
+                <div><strong>${producto.name}</strong></div>
+                <div>${producto.description} </div>
+                <div><strong>${producto.currency} ${producto.cost}</strong></div>
                 <div><strong>Cant. vendidos:</strong> ${producto.soldCount}</div>
               </div>
             </div>
