@@ -40,7 +40,6 @@ main {
 
 /* === Footer fijo al fondo === */
 footer {
-  position: fixed;
   bottom: 0;
   left: 0;
   width: 100%;
