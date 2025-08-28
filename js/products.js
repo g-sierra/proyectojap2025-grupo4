@@ -6,6 +6,11 @@ fetch(URL)
     .then((response) => response.json())
     .then((data) => {
         galeria.innerHTML = ""; // Limpiar galería
+        galeria.innerHTML += `
+        <div class="categoria">
+          <div><strong>${data.catName}</strong></div>
+        </div>
+        `
         data.products.forEach((producto) => {
             galeria.innerHTML += `
             <div class="producto">
