@@ -78,3 +78,10 @@ footer a:hover {
   color: #2e7d32; 
   text-decoration: underline; 
 }
+
+@media (max-width: 480px) {
+    .login-box{
+        width: 74%;
+    padding: 15px;
+    }
+}
