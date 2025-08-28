@@ -4,7 +4,7 @@
   gap: 30px;
   margin: auto;
   padding: 20px;
-  max-width: 600px;
+  max-width: 1100px;
   background-color: rgba(255, 255, 255, 0.8);
   border-radius: 12px;
   backdrop-filter: blur(6px);
@@ -13,12 +13,12 @@
 
 .producto {
   display: flex;
-  align-items: center;
+  /* align-items: start; */
   background-color: #198754;
   border-radius: 12px;
   padding: 20px;
   width: 100%;
-  max-width: 600px;
+  max-width: 90%;
   text-align: left;
   box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
   transition: transform 0.3s ease, box-shadow 0.3s ease;
@@ -34,9 +34,9 @@
 }
 
 .producto img {
-  width: 160px;
-  height: 160px;
-  object-fit: cover;
+  max-width: 250px;
+  /* height: 160px; */
+  object-fit: contain;
   border-radius: 10px;
   border: 2px solid #479f76;
   flex-shrink: 0;
@@ -44,12 +44,12 @@
 
 .info {
   text-align: left;
-  font-size: 0.95rem;
-  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
 }
 
 .info strong {
-  display: block;
   margin-bottom: 4px;
   color: #ffffff;
   text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
@@ -70,14 +70,23 @@
   }
 
   .producto img {
-    width: 160px;
-    height: 160px;
-    margin-right: 16px;
+    max-width: 200px;
   }
 
   .info {
     width: 100%;
+    font-size: 0.95rem;
     text-align: left;
   }
 }
 
+@media (max-width: 576px) {
+  .producto {
+    flex-direction: column;
+  }
+
+  .producto img {
+    display: block;
+    margin-inline: auto;
+  }
+}

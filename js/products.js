@@ -8,7 +8,7 @@ fetch(URL)
         galeria.innerHTML = ""; // Limpiar galería
         galeria.innerHTML += `
         <div class="categoria">
-          <div><strong>${data.catName}</strong></div>
+          <h1>${data.catName}</h1>
         </div>
         `
         data.products.forEach((producto) => {
@@ -16,10 +16,10 @@ fetch(URL)
             <div class="producto">
               <img src="${producto.image}" alt="${producto.name}">
               <div class="info">
-                <div><strong>${producto.name}</strong></div>
-                <div>${producto.description} </div>
-                <div><strong>${producto.currency} ${producto.cost}</strong></div>
-                <div><strong>Cant. vendidos:</strong> ${producto.soldCount}</div>
+                <div class="product-name"><strong>${producto.name}</strong></div>
+                <div class="product-desc">${producto.description} </div>
+                <div class="product-price"><strong>${producto.currency} ${producto.cost}</strong></div>
+                <div class="product-sold">Cant. vendidos: ${producto.soldCount}</div>
               </div>
             </div>
           `;
