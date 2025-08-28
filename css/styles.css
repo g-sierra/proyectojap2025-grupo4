@@ -40,14 +40,21 @@ main {
 
 /* === Footer fijo al fondo === */
 footer {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
   background-color: #198754;
   color: #ffffff;
-  padding: 2rem 0;
-  text-align: center;
-  margin-top: auto;
+  text-align: left;
+  padding: 10px
 }
 
-footer a {
+footer p{
+  color: #ffffff
+}
+
+footer p a {
   color: #ffffff;
   font-weight: 600;
   text-decoration: underline;
