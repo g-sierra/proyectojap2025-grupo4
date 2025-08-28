@@ -1,61 +1,30 @@
-@media (max-width: 768px) { /*se agrega todo este codigo hasta la linea 26*/ 
-  .galeria {
-    max-width: 100%;
-    padding: 10px;
-    gap: 16px;
-  }
-  .producto {
-    width: 100%;
-    min-width: 0;
-    padding: 12px;
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 10px;
-  }
-  .producto img {
-    width: 100%;
-    height: auto;
-    max-width: 220px;
-    margin: 0 auto;
-    display: block;
-  }
-  .info {
-    width: 100%;
-    text-align: left;
-  }
-}
-/* === Galería de productos === */
 .galeria {
-  display: flex;      /*cambio*/   
-  flex-direction: column;    /*cambio*/   
-  flex-wrap: nowrap;       /*cambio*/   
-  overflow-x: unset;       /*cambio*/   
+  display: flex;
+  flex-direction: column;
   gap: 30px;
   margin: auto;
   padding: 20px;
-   max-width: 600px;       /*cambio*/   
+  max-width: 600px;
   background-color: rgba(255, 255, 255, 0.8);
   border-radius: 12px;
   backdrop-filter: blur(6px);
-   align-items: center;     /*cambio*/   
+  align-items: center;
 }
 
-/* === Tarjetas de producto === */
 .producto {
-  display: flex;      /*cambio*/ 
-  align-items: center;   /*cambio*/ 
+  display: flex;
+  align-items: center;
   background-color: #198754;
   border-radius: 12px;
   padding: 20px;
-   width: 420px;     /*cambio*/  
-  min-width: 320px; /*cambio*/ 
-  max-width: 100%;  /*cambio*/ 
+  width: 100%;
+  max-width: 600px;
   text-align: left;
   box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
   transition: transform 0.3s ease, box-shadow 0.3s ease;
   color: #ffffff;
   text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.4);
-  gap: 18px;        /*cambio*/ 
+  gap: 18px;
 }
 
 .producto:hover {
@@ -65,26 +34,50 @@
 }
 
 .producto img {
-  width: 120px;        /*cambio*/        
-  height: 120px;       /*cambio*/        
+  width: 160px;
+  height: 160px;
   object-fit: cover;
   border-radius: 10px;
-  margin-bottom: 0;     /*cambio*/     
   border: 2px solid #479f76;
-  flex-shrink: 0;       /*cambio*/      
+  flex-shrink: 0;
 }
 
-/* === Información del producto === */
 .info {
   text-align: left;
   font-size: 0.95rem;
-  flex: 1;          /*cambio*/     
+  flex: 1;
 }
 
 .info strong {
-  display: inline-block;
-  width: 100px;
+  display: block;
+  margin-bottom: 4px;
   color: #ffffff;
   text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
+}
+
+@media (max-width: 768px) {
+  .galeria {
+    max-width: 100%;
+    padding: 10px;
+    gap: 16px;
+  }
+
+  .producto {
+    flex-direction: row;
+    align-items: flex-start;
+    padding: 12px;
+    gap: 10px;
+  }
+
+  .producto img {
+    width: 160px;
+    height: 160px;
+    margin-right: 16px;
+  }
+
+  .info {
+    width: 100%;
+    text-align: left;
+  }
 }
 
