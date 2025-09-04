@@ -39,34 +39,20 @@ main {
 
 /* === Footer distribuido === */
 footer {
+  bottom: 0;
+  left: 0;
+  width: 100%;
   background-color: #198754;
   color: #ffffff;
-  position: relative;
-  height: 80px;
-  padding: 1rem;
+  text-align: left;
+  padding: 10px
 }
 
-.footer-content {
-  position: relative;
-  height: 100%;
+footer p{
+  color: #ffffff
 }
 
-.footer-left,
-.footer-right {
-  position: absolute;
-  bottom: 1rem;
-  font-size: 0.9rem;
-}
-
-.footer-left {
-  left: 1rem;
-}
-
-.footer-right {
-  right: 1rem;
-}
-
-footer a {
+footer p a {
   color: #ffffff;
   font-weight: 600;
   text-decoration: underline;
@@ -75,4 +61,5 @@ footer a {
 footer a:hover {
   color: #479f76;
 }
+
 
