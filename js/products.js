@@ -1,5 +1,6 @@
 // URL de la categoría 101 (Autos)
-const URL = "https://japceibal.github.io/emercado-api/cats_products/101.json";
+const CAT_ID = localStorage.getItem("catID");
+const URL = `https://japceibal.github.io/emercado-api/cats_products/${CAT_ID}.json`;
 const galeria = document.getElementById("galeria");
 
 fetch(URL)
@@ -11,6 +12,13 @@ fetch(URL)
           <h1>${data.catName}</h1>
         </div>
         `
+        // Si no hay productos mostrar un aviso
+        if (data.products.length === 0) {
+            galeria.innerHTML += `
+            <p class="lead">No se encontraron productos en esta categoría</p> 
+            `
+        }
+
         data.products.forEach((producto) => {
             galeria.innerHTML += `
             <div class="producto">
