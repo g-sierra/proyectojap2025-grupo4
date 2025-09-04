@@ -18,7 +18,7 @@ fetch(URL)
         mostrarProductos(productos);
         data.products.forEach((producto) => {
             galeria.innerHTML += `
-            <div class="producto">
+            <div class="producto" data-product-id="${producto.id}">
               <img src="${producto.image}" alt="${producto.name}">
               <div class="info">
                 <div class="product-name"><strong>${producto.name}</strong></div>
@@ -29,6 +29,16 @@ fetch(URL)
             </div>
           `;
         });
+        document.addEventListener('DOMContentLoaded', function () {
+  // Selecciona todos los elementos de producto
+  const productos = document.querySelectorAll('.producto[data-product-id]');
+  productos.forEach(function (producto) {
+    producto.addEventListener('click', function () {
+      const productId = this.getAttribute('data-product-id');
+      if (productId) {
+        localStorage.setItem('productID', productId);
+        window.location.href = 'product-info.html';
+      }
     })
     .catch((error) => {
         galeria.innerHTML = "<p>Error al cargar los productos.</p>";
