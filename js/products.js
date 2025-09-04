@@ -15,7 +15,6 @@ fetch(URL)
         </div>
         `
         productos = data.products;
-        mostrarProductos(productos);
         data.products.forEach((producto) => {
             galeria.innerHTML += `
             <div class="producto" data-product-id="${producto.id}">
@@ -29,25 +28,22 @@ fetch(URL)
             </div>
           `;
         });
-        document.addEventListener('DOMContentLoaded', function () {
         // Selecciona todos los elementos de producto
-        const productos = document.querySelectorAll('.producto[data-product-id]');
-        productos.forEach(function (producto) {
-          producto.addEventListener('click', function () {
-            const productId = this.getAttribute('data-product-id');
-            if (productId) {
-              localStorage.setItem('productID', productId);
-              window.location.href = 'product-info.html';
-            }
-          });
-        }
-        );
+        const productosDiv = document.querySelectorAll('.producto[data-product-id]');
+        productosDiv.forEach(function (producto) {
+            producto.addEventListener('click', function () {
+                const productId = this.getAttribute('data-product-id');
+                if (productId) {
+                    localStorage.setItem('productID', productId);
+                    window.location.href = 'product-info.html';
+                }
+            })
         });
-      })
-      .catch((error) => {
-          galeria.innerHTML = "<p>Error al cargar los productos.</p>";
-          console.error(error);
-      });
+    })
+    .catch((error) => {
+        galeria.innerHTML = "<p>Error al cargar los productos.</p>";
+        console.error(error);
+    });
 
 function mostrarProductos(lista) {
   galeria.innerHTML = ""; 
@@ -95,8 +91,11 @@ function filtrarPorRango(precioMin, precioMax) {
   mostrarProductos(filtrados);
 }
 
-document.getElementById("aplicarFiltro").addEventListener("click", () => {
-  const min = parseFloat(document.getElementById("precioMin").value) || 0;
-  const max = parseFloat(document.getElementById("precioMax").value) || Infinity;
-  filtrarPorRango(min, max);
+document.addEventListener("DOMContentLoaded", function(){
+
+ document.getElementById("rangeFilterCount").addEventListener("click", function() {
+    const min = parseFloat(document.getElementById("precioMínimo").value) || 0;
+    const max = parseFloat(document.getElementById("precioMáximo").value) || Infinity;
+    filtrarPorRango(min, max);
+  });
 });
