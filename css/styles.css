@@ -62,4 +62,15 @@ footer a:hover {
   color: #479f76;
 }
 
+.icon-white {
+  color: #ffffff !important;
+}
 
+.form-control{
+  color: rgb(13, 202, 13);
+}
+
+.form-control::placeholder {
+  color: #146c43;
+  opacity: 1;
+}
