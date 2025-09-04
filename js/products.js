@@ -30,20 +30,24 @@ fetch(URL)
           `;
         });
         document.addEventListener('DOMContentLoaded', function () {
-  // Selecciona todos los elementos de producto
-  const productos = document.querySelectorAll('.producto[data-product-id]');
-  productos.forEach(function (producto) {
-    producto.addEventListener('click', function () {
-      const productId = this.getAttribute('data-product-id');
-      if (productId) {
-        localStorage.setItem('productID', productId);
-        window.location.href = 'product-info.html';
-      }
-    })
-    .catch((error) => {
-        galeria.innerHTML = "<p>Error al cargar los productos.</p>";
-        console.error(error);
-    });
+        // Selecciona todos los elementos de producto
+        const productos = document.querySelectorAll('.producto[data-product-id]');
+        productos.forEach(function (producto) {
+          producto.addEventListener('click', function () {
+            const productId = this.getAttribute('data-product-id');
+            if (productId) {
+              localStorage.setItem('productID', productId);
+              window.location.href = 'product-info.html';
+            }
+          });
+        }
+        );
+        });
+      })
+      .catch((error) => {
+          galeria.innerHTML = "<p>Error al cargar los productos.</p>";
+          console.error(error);
+      });
 
 function mostrarProductos(lista) {
   galeria.innerHTML = ""; 
