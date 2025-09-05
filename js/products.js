@@ -94,6 +94,7 @@ function ordenarPorVendidos() {
   mostrarProductos(ordenados);
   hacerProductosClickeables();
 }
+
 // Filtra los productos que están dentro de un rango de precio definido
 function filtrarPorRango(precioMin, precioMax) {
   const filtrados = productos.filter(producto => {
@@ -131,4 +132,19 @@ document.addEventListener("DOMContentLoaded", function(){
       ordenarPorVendidos();
   });
 
+  // 🔍 Buscador en tiempo real
+  const searchInput = document.getElementById("searchInput");
+  if (searchInput) {
+    searchInput.addEventListener("input", function () {
+      const query = searchInput.value.toLowerCase();
+      const productosFiltrados = productos.filter(producto => {
+        const nombre = producto.name.toLowerCase();
+        const descripcion = producto.description.toLowerCase();
+        return nombre.includes(query) || descripcion.includes(query);
+      });
+      mostrarProductos(productosFiltrados);
+      hacerProductosClickeables();
+    });
+  }
 });
+
