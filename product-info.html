@@ -10,6 +10,7 @@
   <link href="css/font-awesome.min.css" rel="stylesheet">
   <link href="css/bootstrap.min.css" rel="stylesheet">
   <link href="css/styles.css" rel="stylesheet">
+  <link rel="stylesheet" href="css/stylesproduct-info.css">
 </head>
 
 <body>
@@ -35,9 +36,44 @@
     </div>
   </nav>
   <main>
-    <div class="container">
-      <div class="alert alert-danger text-center" role="alert">
-        <h4 class="alert-heading">Funcionalidad en desarrollo</h4>
+    <div class="container bg-white">
+      <div class="row px-5">
+        <div class="col-12 col-lg-6 mt-5 text-center text-lg-start">
+          <h1 id="product-name">Bugatti Chiron</h1>
+        </div>
+        <div class="col-12 col-lg-6 mt-5 d-flex justify-content-center justify-content-lg-end align-items-center">
+          <span class="fs-2 me-4" id="product-price">USD 3500000</span>
+          <button class="btn btn-lg btn-success" id="botonCarrito">Agregar al carrito</button>
+        </div>
+      </div>
+      <div class="row px-5">
+        <div class="col-12 mt-5">
+          <p class="fs-4" id="product-desc">
+            El mejor hiperdeportivo de mundo. Producción limitada a 500 unidades.
+          </p>
+        </div>
+        <div class="col-12 mt-4">
+          <p class="fs-5 text-muted">
+            Categoría: <span id="product-cat">Autos</span>
+          </p>
+          <p class="fs-5 text-muted">
+            Cantidad de vendidos: <span id="product-cat">2</span>
+          </p>
+        </div>
+      </div>
+      <div class="row px-5 pb-5 mt-1 g-3" id="img-container">
+        <div class="col-12 col-lg-6">
+          <img src="img/prod50925_1.jpg" alt="bugatti-1" class="img-fluid">
+        </div>
+        <div class="col-12 col-lg-6">
+          <img src="img/prod50925_2.jpg" alt="bugatti-2" class="img-fluid">
+        </div>
+        <div class="col-12 col-lg-6">
+          <img src="img/prod50925_3.jpg" alt="bugatti-3" class="img-fluid">
+        </div>
+        <div class="col-12 col-lg-6">
+          <img src="img/prod50925_4.jpg" alt="bugatti-4" class="img-fluid">
+        </div>
       </div>
     </div>
   </main>
