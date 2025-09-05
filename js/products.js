@@ -4,31 +4,17 @@ const URL = `https://japceibal.github.io/emercado-api/cats_products/${CAT_ID}.js
 const galeria = document.getElementById("galeria");
 const tituloDiv = document.querySelector(".titulo");
 
+let titulo;
 let productos = [];
 
 fetch(URL)
     .then((response) => response.json())
     .then((data) => {
-        // Insertar nombre de la categoria
-        const titulo = data.catName
+        titulo = data.catName
         insertarTitulo(titulo);
-
-        galeria.innerHTML = ""; // Limpiar galería
         
         productos = data.products;
-        data.products.forEach((producto) => {
-            galeria.innerHTML += `
-            <div class="producto" data-product-id="${producto.id}">
-              <img src="${producto.image}" alt="${producto.name}">
-              <div class="info">
-                <div class="product-name"><strong>${producto.name}</strong></div>
-                <div class="product-desc">${producto.description} </div>
-                <div class="product-price"><strong>${producto.currency} ${producto.cost}</strong></div>
-                <div class="product-sold">Cant. vendidos: ${producto.soldCount}</div>
-              </div>
-            </div>
-          `;
-        });
+        mostrarProductos(productos);
         hacerProductosClickeables();
     })
     .catch((error) => {
@@ -44,21 +30,25 @@ function insertarTitulo(texto) {
 
 // Mostrar productos
 function mostrarProductos(lista) {
-  galeria.innerHTML = ""; 
+    galeria.innerHTML = "";
 
-  lista.forEach((producto) => {
-    galeria.innerHTML += `
-      <div class="producto" data-product-id="${producto.id}">
-        <img src="${producto.image}" alt="${producto.name}">
-        <div class="info">
-          <div><strong>${producto.name}</strong></div>
-          <div>${producto.description}</div>
-          <div><strong>${producto.currency} ${producto.cost}</strong></div>
-          <div><strong>Cant. vendidos:</strong> ${producto.soldCount}</div>
+    if (lista.length === 0) {
+        galeria.innerHTML += `<p class="lead">No hay productos para mostrar</p>`
+    }
+
+    lista.forEach(producto => {
+        galeria.innerHTML += `
+        <div class="producto" data-product-id="${producto.id}">
+          <img src="${producto.image}" alt="${producto.name}">
+          <div class="info">
+            <div class="product-name"><strong>${producto.name}</strong></div>
+            <div class="product-desc">${producto.description} </div>
+            <div class="product-price"><strong>${producto.currency} ${producto.cost}</strong></div>
+            <div class="product-sold">Cant. vendidos: ${producto.soldCount}</div>
+          </div>
         </div>
-      </div>
-    `;
-  });
+        `;
+    });
 }
 
 // Hacer productos clickeables
@@ -105,13 +95,6 @@ function filtrarPorRango(precioMin, precioMax) {
 }
 
 document.addEventListener("DOMContentLoaded", function(){
-
-  document.getElementById("rangeFilterCount").addEventListener("click", function() {
-    const min = parseFloat(document.getElementById("precioMínimo").value) || 0;
-    const max = parseFloat(document.getElementById("precioMáximo").value) || Infinity;
-    filtrarPorRango(min, max);
-  });
-
   // Botones de filtrado por rango de precio
   document.getElementById("rangeFilterCount").addEventListener("click", function() {
       const min = parseFloat(document.getElementById("precioMínimo").value) || 0;
@@ -123,6 +106,7 @@ document.addEventListener("DOMContentLoaded", function(){
       document.getElementById("precioMínimo").value = "";
       document.getElementById("precioMáximo").value = "";
       mostrarProductos(productos); // Muestra todos otra vez
+      hacerProductosClickeables();
   });
 
   // Botones de ordenamiento
