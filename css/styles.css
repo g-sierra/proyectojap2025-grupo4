@@ -74,3 +74,22 @@ footer a:hover {
   color: #146c43;
   opacity: 1;
 }
+
+/* === Buscador de productos === */
+#searchInput {
+  border: 2px solid #198754;
+  background-color: #f1fdf6;
+  color: #0f2e1c;
+  transition: box-shadow 0.3s ease;
+}
+
+#searchInput:focus {
+  box-shadow: 0 0 5px rgba(25, 135, 84, 0.6);
+  outline: none;
+}
+
+#searchInput::placeholder {
+  color: #198754;
+  font-style: italic;
+}
+
