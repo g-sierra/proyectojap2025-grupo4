@@ -10,8 +10,8 @@ fetch(URL)
     .then((response) => response.json())
     .then((data) => {
         // Insertar nombre de la categoria
-        tituloDiv.innerHTML = "";
-        tituloDiv.innerHTML += `<h1>${data.catName}</h1>`
+        const titulo = data.catName
+        insertarTitulo(titulo);
 
         galeria.innerHTML = ""; // Limpiar galería
         
@@ -45,6 +45,11 @@ fetch(URL)
         galeria.innerHTML = "<p>Error al cargar los productos.</p>";
         console.error(error);
     });
+
+function insertarTitulo(texto) {
+    tituloDiv.innerHTML = "";
+    tituloDiv.innerHTML += `<h1>${texto}</h1>`;
+}
 
 function mostrarProductos(lista) {
   galeria.innerHTML = ""; 
