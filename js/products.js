@@ -1,18 +1,22 @@
-// URL de la categoría 101 (Autos)
-const CAT_ID = localStorage.getItem("catID");
-const URL = `https://japceibal.github.io/emercado-api/cats_products/${CAT_ID}.json`;
+// Variables del DOM
 const galeria = document.getElementById("galeria");
 const tituloDiv = document.querySelector(".titulo");
 
+// Otras variables globales
 let titulo;
 let productos = [];
 
+// Fetch principal
+const CAT_ID = localStorage.getItem("catID");
+const URL = `https://japceibal.github.io/emercado-api/cats_products/${CAT_ID}.json`;
 fetch(URL)
     .then((response) => response.json())
     .then((data) => {
+        // Esto muestra el titulo de la categoría
         titulo = data.catName
         insertarTitulo(titulo);
         
+        // Acá se cargan todos los productos y se muestran
         productos = data.products;
         mostrarProductos(productos);
         hacerProductosClickeables();
@@ -22,13 +26,13 @@ fetch(URL)
         console.error(error);
     });
 
-// Mostrar titulo
+// Funcion para mostrar titulo
 function insertarTitulo(texto) {
     tituloDiv.innerHTML = "";
     tituloDiv.innerHTML += `<h1>${texto}</h1>`;
 }
 
-// Mostrar productos
+// Funcion para mostrar productos
 function mostrarProductos(lista) {
     galeria.innerHTML = "";
 
@@ -51,7 +55,7 @@ function mostrarProductos(lista) {
     });
 }
 
-// Hacer productos clickeables
+// Funcion para hacer productos clickeables
 function hacerProductosClickeables() {
     const productosDiv = document.querySelectorAll(".producto[data-product-id]");
     productosDiv.forEach(function (producto) {
