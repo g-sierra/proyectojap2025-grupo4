@@ -99,3 +99,56 @@ document.addEventListener("DOMContentLoaded", function(){
     filtrarPorRango(min, max);
   });
 });
+document.addEventListener("DOMContentLoaded", function(){
+
+  // Botones de filtrado por rango de precio
+  document.getElementById("rangeFilterCount").addEventListener("click", function() {
+      const min = parseFloat(document.getElementById("precioMínimo").value) || 0;
+      const max = parseFloat(document.getElementById("precioMáximo").value) || Infinity;
+      filtrarPorRango(min, max);
+  });
+
+  document.getElementById("clearRangeFilter").addEventListener("click", function() {
+      document.getElementById("precioMínimo").value = "";
+      document.getElementById("precioMáximo").value = "";
+      mostrarProductos(productos); // Muestra todos otra vez
+  });
+
+  // Botones de ordenamiento
+  document.getElementById("sortAsc").addEventListener("click", function() {
+      ordenarPorPrecioAsc();
+  });
+
+  document.getElementById("sortDesc").addEventListener("click", function() {
+      ordenarPorPrecioDesc();
+  });
+
+  document.getElementById("sortByCount").addEventListener("click", function() {
+      ordenarPorVendidos();
+  });
+
+});
+// Hacer clickeables los productos
+const productosDiv = document.querySelectorAll('.producto[data-product-id]');
+productosDiv.forEach(function (producto) {
+  producto.addEventListener('click', function () {
+      const productId = this.getAttribute('data-product-id');
+      if (productId) {
+          localStorage.setItem('productID', productId);
+          window.location.href = 'product-info.html';
+      }
+  });
+});
+lista.forEach((producto) => {
+  galeria.innerHTML += `
+    <div class="producto" data-product-id="${producto.id}">
+      <img src="${producto.image}" alt="${producto.name}">
+      <div class="info">
+        <div><strong>${producto.name}</strong></div>
+        <div>${producto.description}</div>
+        <div><strong>${producto.currency} ${producto.cost}</strong></div>
+        <div><strong>Cant. vendidos:</strong> ${producto.soldCount}</div>
+      </div>
+    </div>
+  `;
+});
