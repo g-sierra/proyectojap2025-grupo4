@@ -73,6 +73,14 @@
         </div>
       </div>
     </div>
+
+    <!-- 🔍 Buscador agregado -->
+    <div class="row mb-3">
+      <div class="col-md-6 offset-md-6">
+        <input type="search" id="searchInput" class="form-control" placeholder="Buscar productos...">
+      </div>
+    </div>
+
     <hr>
     <div class="galeria" id="galeria"></div>
   </main>
@@ -96,5 +104,25 @@
   <script src="js/init.js"></script>
   <script src="js/products.js"></script>
 
+  <!-- 🔍 Script de búsqueda en tiempo real -->
+  <script>
+    document.addEventListener("DOMContentLoaded", () => {
+      const searchInput = document.getElementById("searchInput");
+      const galeria = document.getElementById("galeria");
+
+      searchInput.addEventListener("input", () => {
+        const query = searchInput.value.toLowerCase();
+        const cards = galeria.querySelectorAll(".product-card");
+
+        cards.forEach(card => {
+          const title = card.querySelector(".product-title")?.textContent.toLowerCase() || "";
+          const description = card.querySelector(".product-description")?.textContent.toLowerCase() || "";
+          const matches = title.includes(query) || description.includes(query);
+          card.style.display = matches ? "block" : "none";
+        });
+      });
+    });
+  </script>
 </body>
 </html>
+
