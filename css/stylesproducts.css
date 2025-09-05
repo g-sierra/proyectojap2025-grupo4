@@ -31,6 +31,7 @@
   transform: translateY(-8px);
   box-shadow: 0 12px 20px rgba(0, 0, 0, 0.2);
   background-color: #146c43;
+  cursor: pointer;
 }
 
 .producto img {

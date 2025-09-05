@@ -2,18 +2,19 @@
 const CAT_ID = localStorage.getItem("catID");
 const URL = `https://japceibal.github.io/emercado-api/cats_products/${CAT_ID}.json`;
 const galeria = document.getElementById("galeria");
+const tituloDiv = document.querySelector(".titulo");
 
 let productos = [];
 
 fetch(URL)
     .then((response) => response.json())
     .then((data) => {
+        // Insertar nombre de la categoria
+        tituloDiv.innerHTML = "";
+        tituloDiv.innerHTML += `<h1>${data.catName}</h1>`
+
         galeria.innerHTML = ""; // Limpiar galería
-        galeria.innerHTML += `
-        <div class="categoria">
-          <h1>${data.catName}</h1>
-        </div>
-        `
+        
         productos = data.products;
         data.products.forEach((producto) => {
             galeria.innerHTML += `
@@ -47,14 +48,10 @@ fetch(URL)
 
 function mostrarProductos(lista) {
   galeria.innerHTML = ""; 
-  galeria.innerHTML += `
-    <div class="categoria">
-      <div><strong>${lista.length > 0 ? lista[0].categoryName || "" : ""}</strong></div>
-    </div>
-  `;
+
   lista.forEach((producto) => {
     galeria.innerHTML += `
-      <div class="producto">
+      <div class="producto" data-product-id=>
         <img src="${producto.image}" alt="${producto.name}">
         <div class="info">
           <div><strong>${producto.name}</strong></div>
@@ -93,13 +90,11 @@ function filtrarPorRango(precioMin, precioMax) {
 
 document.addEventListener("DOMContentLoaded", function(){
 
- document.getElementById("rangeFilterCount").addEventListener("click", function() {
+  document.getElementById("rangeFilterCount").addEventListener("click", function() {
     const min = parseFloat(document.getElementById("precioMínimo").value) || 0;
     const max = parseFloat(document.getElementById("precioMáximo").value) || Infinity;
     filtrarPorRango(min, max);
   });
-});
-document.addEventListener("DOMContentLoaded", function(){
 
   // Botones de filtrado por rango de precio
   document.getElementById("rangeFilterCount").addEventListener("click", function() {
