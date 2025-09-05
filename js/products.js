@@ -1,6 +1,11 @@
 // Variables del DOM
 const galeria = document.getElementById("galeria");
 const tituloDiv = document.querySelector(".titulo");
+const sortAscButton = document.getElementById("sortAsc");
+const sortDescButton = document.getElementById("sortDesc");
+const sortByCountButton = document.getElementById("sortByCount");
+const filterButton = document.getElementById("rangeFilterCount");
+const clearFilterButton = document.getElementById("clearRangeFilter");
 
 // Otras variables globales
 let titulo;
@@ -100,13 +105,13 @@ function filtrarPorRango(precioMin, precioMax) {
 
 document.addEventListener("DOMContentLoaded", function(){
   // Botones de filtrado por rango de precio
-  document.getElementById("rangeFilterCount").addEventListener("click", function() {
+  filterButton.addEventListener("click", function() {
       const min = parseFloat(document.getElementById("precioMínimo").value) || 0;
       const max = parseFloat(document.getElementById("precioMáximo").value) || Infinity;
       filtrarPorRango(min, max);
   });
 
-  document.getElementById("clearRangeFilter").addEventListener("click", function() {
+  clearFilterButton.addEventListener("click", function() {
       document.getElementById("precioMínimo").value = "";
       document.getElementById("precioMáximo").value = "";
       mostrarProductos(productos); // Muestra todos otra vez
@@ -114,15 +119,15 @@ document.addEventListener("DOMContentLoaded", function(){
   });
 
   // Botones de ordenamiento
-  document.getElementById("sortAsc").addEventListener("click", function() {
+  sortAscButton.addEventListener("click", function() {
       ordenarPorPrecioAsc();
   });
 
-  document.getElementById("sortDesc").addEventListener("click", function() {
+  sortDescButton.addEventListener("click", function() {
       ordenarPorPrecioDesc();
   });
 
-  document.getElementById("sortByCount").addEventListener("click", function() {
+  sortByCountButton.addEventListener("click", function() {
       ordenarPorVendidos();
   });
 
