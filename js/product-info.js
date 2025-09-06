@@ -36,11 +36,31 @@ function showProductData(data) {
     productSoldCount.textContent = data.soldCount;
 }
 
+// Funcion para mostrar las imagenes
+function showProductImages(imageArray) {
+    imgContainer.innerHTML = "";
+    imageArray.forEach(image => {
+        const div = document.createElement("div");
+        div.classList.add("col-12", "col-lg-6");  // Clases de Bootstrap 5
 
+        const img = document.createElement("img");
+        img.src = image;
+        img.alt = "Product Image";
+        img.classList.add("img-fluid", "border", "border-success", "shadow");  // Clases de Bootstrap 5
+        
+        div.appendChild(img);
+        imgContainer.appendChild(div);
+    });
+}
+
+// Funcion principal
 async function main() {
     // Cargar datos del producto
     const productData = await getProductData();
+    // Mostrar datos en la página
     showProductData(productData);
+    // Mostrar imágenes del producto
+    showProductImages(productData.images);
 }
 
 main();
