@@ -6,6 +6,7 @@ const productCat = document.getElementById("product-cat");
 const productSoldCount = document.getElementById("product-soldCount");
 const imgContainer = document.getElementById("img-container");
 const botonCarrito = document.getElementById("botonCarrito");
+const mainContainer = document.getElementById("main-container");
 
 // Cargar productID desde localStorage y definir URL de datos
 const PRODUCT_ID = localStorage.getItem("productID");
@@ -66,6 +67,14 @@ function showProductImages(imageArray, productName) {
 async function main() {
     // Cargar datos del producto
     const productData = await getProductData();
+    if (!productData) {
+        mainContainer.innerHTML = `
+            <p class="lead text-center p-5">
+              Error al cargar los datos del producto.
+            </p>
+        `;
+        return;
+    }
     // Mostrar datos en la página
     showProductData(productData);
     // Mostrar imágenes del producto
