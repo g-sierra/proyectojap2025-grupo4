@@ -7,10 +7,16 @@ const productSoldCount = document.getElementById("product-soldCount");
 const imgContainer = document.getElementById("img-container");
 const botonCarrito = document.getElementById("botonCarrito");
 
-// Llamada a la API
+// Cargar productID desde localStorage y definir URL de datos
 const PRODUCT_ID = localStorage.getItem("productID");
+// Si no hay prouctID en localStorage, redirigir a products.html
+if(!PRODUCT_ID) {
+    console.error("No se encontró productID en localStorage");
+    window.location.replace("products.html");
+}
 const DATA_URL = `https://japceibal.github.io/emercado-api/products/${PRODUCT_ID}.json`;
 
+// Funcion para llamar a la API
 async function getProductData() {
     try {
         const response = await fetch(DATA_URL);
