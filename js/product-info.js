@@ -37,19 +37,21 @@ function showProductData(data) {
 }
 
 // Funcion para mostrar las imagenes
-function showProductImages(imageArray) {
+function showProductImages(imageArray, productName) {
     imgContainer.innerHTML = "";
+    let count = 1;  // Contador para el alt dinamico de las imagenes
     imageArray.forEach(image => {
         const div = document.createElement("div");
         div.classList.add("col-12", "col-lg-6");  // Clases de Bootstrap 5
 
         const img = document.createElement("img");
         img.src = image;
-        img.alt = "Product Image";
+        img.alt = `Imagen ${count} del producto: ${productName}`;
         img.classList.add("img-fluid", "border", "border-success", "shadow");  // Clases de Bootstrap 5
         
         div.appendChild(img);
         imgContainer.appendChild(div);
+        count++;
     });
 }
 
@@ -60,7 +62,7 @@ async function main() {
     // Mostrar datos en la página
     showProductData(productData);
     // Mostrar imágenes del producto
-    showProductImages(productData.images);
+    showProductImages(productData.images, productData.name);
 }
 
 main();
