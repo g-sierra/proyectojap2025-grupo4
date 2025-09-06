@@ -5,6 +5,7 @@ const productDesc = document.getElementById("product-desc");
 const productCat = document.getElementById("product-cat");
 const productSoldCount = document.getElementById("product-soldCount");
 const imgContainer = document.getElementById("img-container");
+const botonCarrito = document.getElementById("botonCarrito");
 
 // Llamada a la API
 const PRODUCT_ID = localStorage.getItem("productID");
@@ -65,4 +66,10 @@ async function main() {
     showProductImages(productData.images, productData.name);
 }
 
+// Manejar click en boton del carrito
+botonCarrito.addEventListener("click", () => {
+    alert("Funcionalidad en desarrollo");
+})
+
+// Ejecutar la funcion principal
 main();
