@@ -1,3 +1,4 @@
+/* Estilos existentes */
 .container {
   border-radius: 12px;
 }
@@ -10,3 +11,28 @@ img {
 img:hover {
   transform: scale(1.033);
 }
+
+/* Estrellas de calificación al pie */
+.star-rating-footer {
+  direction: rtl;
+  display: inline-flex;
+  font-size: 2rem;
+  gap: 0.3rem;
+}
+
+.star-rating-footer input {
+  display: none;
+}
+
+.star-rating-footer label {
+  color: #ccc;
+  cursor: pointer;
+  transition: color 0.2s;
+}
+
+.star-rating-footer input:checked ~ label,
+.star-rating-footer label:hover,
+.star-rating-footer label:hover ~ label {
+  color: #ffc107;
+}
+
