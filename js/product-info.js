@@ -89,7 +89,7 @@ function showProductComments(comments) {
     comments.forEach(comment => {
         const userImg = "img/img_perfil.png"; /*Se aplica la misma imagen para todos los usuarios*/
         html += `
-        <div class="comment.card mb-2 style="background-color: #f6fff6;">
+        <div class="comment-card mb-2 style="background-color: #f6fff6;">
             <div class="card-body">
                 <div class="d-flex align-items-center mb-2">
                     <img src="${userImg}" 
