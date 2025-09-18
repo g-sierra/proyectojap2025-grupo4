@@ -63,7 +63,51 @@ function showProductImages(imageArray, productName) {
         count++;
     });
 }
+/* Sección de comentarios*/
+const commentsContainer = document.createElement("div");
+commentsContainer.id = "comments-section";
+mainContainer.appendChild(commentsContainer);
 
+async function getProductComments() {
+    const COMMENTS_URL = `https://japceibal.github.io/emercado-api/products_comments/${PRODUCT_ID}.json`;
+    try {
+        const response = await fetch(COMMENTS_URL);
+        if (!response.ok) throw new Error(`HTTP error: ${response.status}`);
+        return await response.json();
+    } catch (error) {
+        console.error("Error al obtener comentarios:", error);
+        return [];
+    }
+}
+/*Se agrega sección de comentarios*/
+function showProductComments(comments) {
+    if (!comments.length) {
+        commentsContainer.innerHTML = "<p class='lead'>No hay comentarios para este producto.</p>";
+        return;
+    }
+    let html = "<h3>Calificaciones</h3>";
+    comments.forEach(comment => {
+        const userImg = "img/img_perfil.png"; /*Se aplica la misma imagen para todos los usuarios*/
+        html += `
+        <div class="card mb-2 style="background-color: #f6fff6;">
+            <div class="card-body">
+                <div class="d-flex align-items-center mb-2">
+                    <img src="${userImg}" 
+                         alt="Avatar" class="me-3" style="width:48px;height:48px;object-fit:cover;">
+                    <div class="flex-grow-1">
+                        <strong>${comment.user}</strong>
+                    </div>
+                    <div class="ms-auto text-success fs-5">
+                        ${"★".repeat(comment.score)}${"☆".repeat(5 - comment.score)}
+                    </div>
+                </div>
+                <p class="mb-0">${comment.description}</p>
+            </div>
+        </div>
+        `;
+    });
+    commentsContainer.innerHTML = html;
+}
 // Funcion de productos relacionados
 
 function showRelatedProducts(relatedArray) {
@@ -110,8 +154,10 @@ async function main() {
     showProductData(productData);
     // Mostrar imágenes del producto
     showProductImages(productData.images, productData.name);
-
     showRelatedProducts(productData.relatedProducts);
+    // Mostrar comentarios
+    const comments = await getProductComments();
+    showProductComments(comments);
 }
 
 // Manejar click en boton del carrito
