@@ -7,11 +7,12 @@ const productSoldCount = document.getElementById("product-soldCount");
 const imgContainer = document.getElementById("img-container");
 const botonCarrito = document.getElementById("botonCarrito");
 const mainContainer = document.getElementById("main-container");
+const relatedContainer = document.getElementById("related-products");
 
 // Cargar productID desde localStorage y definir URL de datos
 const PRODUCT_ID = localStorage.getItem("productID");
 // Si no hay prouctID en localStorage, redirigir a products.html
-if(!PRODUCT_ID) {
+if (!PRODUCT_ID) {
     console.error("No se encontró productID en localStorage");
     window.location.replace("products.html");
 }
@@ -56,7 +57,7 @@ function showProductImages(imageArray, productName) {
         img.src = image;
         img.alt = `Imagen ${count} del producto: ${productName}`;
         img.classList.add("img-fluid", "border", "border-success", "shadow");  // Clases de Bootstrap 5
-        
+
         div.appendChild(img);
         imgContainer.appendChild(div);
         count++;
@@ -66,7 +67,6 @@ function showProductImages(imageArray, productName) {
 // Funcion de productos relacionados
 
 function showRelatedProducts(relatedArray) {
-    const relatedContainer = document.getElementById("related-products");
     relatedContainer.innerHTML = "";
 
     relatedArray.forEach(product => {
@@ -86,8 +86,8 @@ function showRelatedProducts(relatedArray) {
 
         // Cuando clickeo en un producto relacionado
         div.addEventListener("click", () => {
-            localStorage.setItem("productID", product.id); 
-            location.reload(); 
+            localStorage.setItem("productID", product.id);
+            location.reload();
         });
 
         relatedContainer.appendChild(div);
