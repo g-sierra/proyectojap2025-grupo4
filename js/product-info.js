@@ -167,3 +167,56 @@ botonCarrito.addEventListener("click", () => {
 
 // Ejecutar la funcion principal
 main();
+
+// Manejar el envío del formulario de calificación y comentario
+const ratingForm = document.getElementById("rating-form-footer");
+
+ratingForm.addEventListener("submit", function(e) {
+    e.preventDefault(); // Evita que se recargue la página
+
+    // Tomar la calificación seleccionada
+    const score = parseInt(document.querySelector('input[name="footer-rating"]:checked')?.value);
+    if (!score) {
+        alert("Por favor, seleccioná una calificación.");
+        return;
+    }
+
+    // Tomar el comentario escrito
+    const description = this.querySelector("textarea").value.trim();
+    if (!description) {
+        alert("Por favor, escribí tu comentario.");
+        return;
+    }
+
+    // Crear un objeto de comentario simulado
+    const newComment = {
+        user: localStorage.getItem("usuario") || "Usuario",
+        score: score,
+        description: description
+};
+
+    // Agregar el nuevo comentario al DOM
+    const commentHTML = `
+        <div class="card mb-2" style="background-color: #f6fff6;">
+            <div class="card-body">
+                <div class="d-flex align-items-center mb-2">
+                    <img src="img/img_perfil.png" 
+                         alt="Avatar" class="me-3" style="width:48px;height:48px;object-fit:cover;">
+                    <div class="flex-grow-1">
+                        <strong>${newComment.user}</strong>
+                    </div>
+                    <div class="ms-auto text-success fs-5">
+                        ${"★".repeat(newComment.score)}${"☆".repeat(5 - newComment.score)}
+                    </div>
+                </div>
+                <p class="mb-0">${newComment.description}</p>
+            </div>
+        </div>
+    `;
+
+    // Insertarlo al inicio de la sección de comentarios
+    commentsContainer.innerHTML = commentHTML + commentsContainer.innerHTML;
+
+    // Limpiar el formulario
+    this.reset();
+});
