@@ -3,12 +3,12 @@
   border-radius: 12px;
 }
 
-img {
+.product-img {
   border-radius: 12px;
   transition: all .3s ease;
 }
 
-img:hover {
+.product-img:hover {
   transform: scale(1.033);
 }
 

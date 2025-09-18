@@ -56,7 +56,7 @@ function showProductImages(imageArray, productName) {
         const img = document.createElement("img");
         img.src = image;
         img.alt = `Imagen ${count} del producto: ${productName}`;
-        img.classList.add("img-fluid", "border", "border-success", "shadow");  // Clases de Bootstrap 5
+        img.classList.add("product-img", "img-fluid", "border", "border-success", "shadow");  // Clases de Bootstrap 5
 
         div.appendChild(img);
         imgContainer.appendChild(div);
