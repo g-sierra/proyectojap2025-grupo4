@@ -35,4 +35,18 @@ img:hover {
 .star-rating-footer label:hover ~ label {
   color: #ffc107;
 }
+.card.border-success {
+    border-color: #198754 !important;
+    background-color: #f6fff6;
+}
 
+.card .text-success {
+    color: #198754 !important;
+}
+
+.card img {
+    width: 48px;
+    height: 48px;
+    object-fit: cover;
+    border-radius: 0;
+}
