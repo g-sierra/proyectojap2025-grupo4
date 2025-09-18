@@ -63,6 +63,37 @@ function showProductImages(imageArray, productName) {
     });
 }
 
+// Funcion de productos relacionados
+
+function showRelatedProducts(relatedArray) {
+    const relatedContainer = document.getElementById("related-products");
+    relatedContainer.innerHTML = "";
+
+    relatedArray.forEach(product => {
+        const div = document.createElement("div");
+        div.classList.add("col-6", "col-md-4", "col-lg-3");
+
+        div.innerHTML = `
+            <div class="card h-100 shadow-sm border-success">
+                <img src="${product.image}" 
+                     alt="Imagen del producto relacionado: ${product.name}" 
+                     class="card-img-top img-fluid">
+                <div class="card-body p-2">
+                    <h6 class="card-title text-center">${product.name}</h6>
+                </div>
+            </div>
+        `;
+
+        // Cuando clickeo en un producto relacionado
+        div.addEventListener("click", () => {
+            localStorage.setItem("productID", product.id); 
+            location.reload(); 
+        });
+
+        relatedContainer.appendChild(div);
+    });
+}
+
 // Funcion principal
 async function main() {
     // Cargar datos del producto
@@ -79,6 +110,8 @@ async function main() {
     showProductData(productData);
     // Mostrar imágenes del producto
     showProductImages(productData.images, productData.name);
+
+    showRelatedProducts(productData.relatedProducts);
 }
 
 // Manejar click en boton del carrito
