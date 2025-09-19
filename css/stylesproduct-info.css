@@ -35,6 +35,11 @@
 .star-rating-footer label:hover ~ label {
   color: #ffc107;
 }
+
+textarea::placeholder {
+  color: #6c757d !important;
+}
+
 .comment-card {
     border-color: #198754 !important;
     background-color: #f6fff6;
@@ -45,4 +50,13 @@
     height: 48px;
     object-fit: cover;
     border-radius: 0;
+}
+
+.related-card {
+  transition: all .3s ease;
+  cursor: pointer;
+}
+
+.related-card:hover {
+  transform: scale(1.033)
 }

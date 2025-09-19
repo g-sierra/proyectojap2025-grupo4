@@ -113,10 +113,10 @@ function showRelatedProducts(relatedArray) {
 
     relatedArray.forEach(product => {
         const div = document.createElement("div");
-        div.classList.add("col-6", "col-md-4", "col-lg-3");
+        div.classList.add("col-8", "col-md-3");
 
         div.innerHTML = `
-            <div class="card h-100 shadow-sm border-success">
+            <div class="card related-card shadow border-success">
                 <img src="${product.image}" 
                      alt="Imagen del producto relacionado: ${product.name}" 
                      class="card-img-top img-fluid">
