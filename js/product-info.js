@@ -79,11 +79,11 @@ async function getProductComments() {
 }
 /*Se agrega sección de comentarios*/
 function showProductComments(comments) {
+    let html = "<h3>Calificaciones</h3>";
     if (!comments.length) {
-        commentsContainer.innerHTML = "<p class='lead'>No hay comentarios para este producto.</p>";
+        commentsContainer.innerHTML += html + "<p class='lead'>No hay comentarios para este producto.</p>";
         return;
     }
-    let html = "<h3>Calificaciones</h3>";
     comments.forEach(comment => {
         const userImg = "img/img_perfil.png"; /*Se aplica la misma imagen para todos los usuarios*/
         html += `
