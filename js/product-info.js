@@ -183,29 +183,35 @@ async function main() {
             return;
         }
 
-        // Crear un objeto de comentario simulado
+        // Obtener la fecha actual en formato YYYY-MM-DD
+        const now = new Date();
+        const fecha = now.toISOString().split("T")[0]; // solo fecha, sin hora
+
         const newComment = {
             user: localStorage.getItem("usuario") || "Usuario",
             score: score,
-            description: description
+            description: description,
+            dateTime: fecha
         };
 
-        // Agregar el nuevo comentario al DOM
         const commentHTML = `
-            <div class="card comment-card mb-2 border-success shadow-sm">
-                <div class="card-body">
-                    <div class="d-flex align-items-center mb-2">
-                        <div class="flex-grow-1">
-                            <strong>${newComment.user}</strong>
-                        </div>
-                        <div class="ms-auto text-success fs-5">
-                            ${"★".repeat(newComment.score)}${"☆".repeat(5 - newComment.score)}
-                        </div>
-                    </div>
-                    <p class="mb-0">${newComment.description}</p>
+    <div class="card comment-card mb-2 border-success shadow-sm">
+        <div class="card-body">
+            <div class="d-flex flex-column flex-md-row align-items-md-center mb-2">
+                <img src="img/img_perfil.png" 
+                     alt="Avatar" class="me-3 avatar-img d-none d-md-block">
+                <div class="flex-grow-1">
+                    <strong>${newComment.user}</strong>
+                    <span class="text-muted ms-2 comment-date">${newComment.dateTime}</span>
+                </div>
+                <div class="ms-md-auto text-success fs-5">
+                    ${"★".repeat(newComment.score)}${"☆".repeat(5 - newComment.score)}
                 </div>
             </div>
-        `;
+            <p class="mb-0">${newComment.description}</p>
+        </div>
+    </div>
+`;
 
         // Insertarlo al final de la sección de comentarios
         commentsContainer.innerHTML += commentHTML;
