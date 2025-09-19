@@ -195,8 +195,6 @@ async function main() {
             <div class="card comment-card mb-2 border-success shadow-sm">
                 <div class="card-body">
                     <div class="d-flex align-items-center mb-2">
-                        <img src="img/img_perfil.png" 
-                            alt="Avatar" class="me-3 avatar-img d-none d-md-block">
                         <div class="flex-grow-1">
                             <strong>${newComment.user}</strong>
                         </div>
