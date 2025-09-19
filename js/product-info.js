@@ -91,7 +91,7 @@ function showProductComments(comments) {
             <div class="card-body">
                 <div class="d-flex align-items-center mb-2">
                     <img src="${userImg}" 
-                         alt="Avatar" class="me-3" style="width:48px;height:48px;object-fit:cover;">
+                         alt="Avatar" class="me-3 avatar-img d-none d-md-block">
                     <div class="flex-grow-1">
                         <strong>${comment.user}</strong>
                     </div>
@@ -199,7 +199,7 @@ ratingForm.addEventListener("submit", function(e) {
             <div class="card-body">
                 <div class="d-flex align-items-center mb-2">
                     <img src="img/img_perfil.png" 
-                         alt="Avatar" class="me-3" style="width:48px;height:48px;object-fit:cover;">
+                         alt="Avatar" class="me-3 avatar-img d-none d-md-block">
                     <div class="flex-grow-1">
                         <strong>${newComment.user}</strong>
                     </div>

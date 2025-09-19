@@ -45,9 +45,9 @@ textarea::placeholder {
     background-color: #f6fff6;
 }
 
-.comment-card img {
-    width: 48px;
-    height: 48px;
+.avatar-img {
+    width: 3rem;
+    height: 3rem;
     object-fit: cover;
     border-radius: 0;
 }
