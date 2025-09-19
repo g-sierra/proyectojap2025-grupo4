@@ -64,9 +64,6 @@ function showProductImages(imageArray, productName) {
     });
 }
 /* Sección de comentarios*/
-// const commentsContainer = document.createElement("div");
-// commentsContainer.id = "comments-section";
-// mainContainer.appendChild(commentsContainer);
 const commentsContainer = document.getElementById("comments-section");
 
 async function getProductComments() {
