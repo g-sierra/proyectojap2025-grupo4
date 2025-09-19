@@ -58,6 +58,10 @@ textarea::placeholder {
   transition: all .3s ease;
 }
 
+.related-card img {
+  border-radius: 12px;
+}
+
 .related-card:hover {
   transform: scale(1.033)
 }
