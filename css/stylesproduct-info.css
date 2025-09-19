@@ -41,7 +41,7 @@ textarea::placeholder {
 }
 
 .comment-card {
-    border-color: #198754 !important;
+    border-radius: 12px;
     background-color: #f6fff6;
 }
 
@@ -53,8 +53,9 @@ textarea::placeholder {
 }
 
 .related-card {
-  transition: all .3s ease;
+  border-radius: 12px;
   cursor: pointer;
+  transition: all .3s ease;
 }
 
 .related-card:hover {

@@ -87,7 +87,7 @@ function showProductComments(comments) {
     comments.forEach(comment => {
         const userImg = "img/img_perfil.png"; /*Se aplica la misma imagen para todos los usuarios*/
         html += `
-        <div class="card comment-card mb-2 style="background-color: #f6fff6;">
+        <div class="card comment-card mb-2 border-success shadow-sm">
             <div class="card-body">
                 <div class="d-flex align-items-center mb-2">
                     <img src="${userImg}" 
@@ -116,7 +116,7 @@ function showRelatedProducts(relatedArray) {
         div.classList.add("col-8", "col-md-3");
 
         div.innerHTML = `
-            <div class="card related-card shadow border-success">
+            <div class="card related-card shadow-sm border-success">
                 <img src="${product.image}" 
                      alt="Imagen del producto relacionado: ${product.name}" 
                      class="card-img-top img-fluid">
@@ -195,7 +195,7 @@ ratingForm.addEventListener("submit", function(e) {
 
     // Agregar el nuevo comentario al DOM
     const commentHTML = `
-        <div class="card comment-card mb-2" style="background-color: #f6fff6;">
+        <div class="card comment-card mb-2 border-success shadow-sm">
             <div class="card-body">
                 <div class="d-flex align-items-center mb-2">
                     <img src="img/img_perfil.png" 
