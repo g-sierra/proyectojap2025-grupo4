@@ -84,8 +84,8 @@ function showProductComments(comments) {
         commentsContainer.innerHTML += html + "<p class='lead'>No hay comentarios para este producto.</p>";
         return;
     }
-    comments.forEach(comment => {
-        const userImg = "img/img_perfil.png"; /*Se aplica la misma imagen para todos los usuarios*/
+comments.forEach(comment => {
+        const userImg = "img/img_perfil.png"; // Se aplica la misma imagen para todos los usuarios
         html += `
         <div class="card comment-card mb-2 border-success shadow-sm">
             <div class="card-body">
@@ -94,6 +94,7 @@ function showProductComments(comments) {
                          alt="Avatar" class="me-3 avatar-img d-none d-md-block">
                     <div class="flex-grow-1">
                         <strong>${comment.user}</strong>
+                        <span class="text-muted ms-2" style="font-size:0.9em;">${comment.dateTime || ""}</span>
                     </div>
                     <div class="ms-auto text-success fs-5">
                         ${"★".repeat(comment.score)}${"☆".repeat(5 - comment.score)}
