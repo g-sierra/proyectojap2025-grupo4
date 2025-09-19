@@ -35,13 +35,9 @@
 .star-rating-footer label:hover ~ label {
   color: #ffc107;
 }
-.comment-card.border-success {
+.comment-card {
     border-color: #198754 !important;
     background-color: #f6fff6;
-}
-
-.comment-card .text-success {
-    color: #198754 !important;
 }
 
 .comment-card img {

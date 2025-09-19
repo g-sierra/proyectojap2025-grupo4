@@ -64,9 +64,10 @@ function showProductImages(imageArray, productName) {
     });
 }
 /* Sección de comentarios*/
-const commentsContainer = document.createElement("div");
-commentsContainer.id = "comments-section";
-mainContainer.appendChild(commentsContainer);
+// const commentsContainer = document.createElement("div");
+// commentsContainer.id = "comments-section";
+// mainContainer.appendChild(commentsContainer);
+const commentsContainer = document.getElementById("comments-section");
 
 async function getProductComments() {
     const COMMENTS_URL = `https://japceibal.github.io/emercado-api/products_comments/${PRODUCT_ID}.json`;
@@ -89,7 +90,7 @@ function showProductComments(comments) {
     comments.forEach(comment => {
         const userImg = "img/img_perfil.png"; /*Se aplica la misma imagen para todos los usuarios*/
         html += `
-        <div class="comment-card mb-2 style="background-color: #f6fff6;">
+        <div class="card comment-card mb-2 style="background-color: #f6fff6;">
             <div class="card-body">
                 <div class="d-flex align-items-center mb-2">
                     <img src="${userImg}" 
@@ -197,7 +198,7 @@ ratingForm.addEventListener("submit", function(e) {
 
     // Agregar el nuevo comentario al DOM
     const commentHTML = `
-        <div class="card mb-2" style="background-color: #f6fff6;">
+        <div class="card comment-card mb-2" style="background-color: #f6fff6;">
             <div class="card-body">
                 <div class="d-flex align-items-center mb-2">
                     <img src="img/img_perfil.png" 
@@ -214,8 +215,8 @@ ratingForm.addEventListener("submit", function(e) {
         </div>
     `;
 
-    // Insertarlo al inicio de la sección de comentarios
-    commentsContainer.innerHTML = commentHTML + commentsContainer.innerHTML;
+    // Insertarlo al final de la sección de comentarios
+    commentsContainer.innerHTML += commentHTML;
 
     // Limpiar el formulario
     this.reset();
