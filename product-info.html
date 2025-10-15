@@ -20,6 +20,12 @@
         aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
+      <div class="d-flex align-items-center gap-3 ms-auto text-light">
+      <label class="switch mb-0">
+      <input type="checkbox" id="modo-oscuro">
+      <span class="slider round"></span>
+      </label>
+        </div>
       <div class="collapse navbar-collapse" id="navbarNav">
         <ul class="navbar-nav w-100 justify-content-between">
           <li class="nav-item">
@@ -110,6 +116,18 @@
   <script src="js/bootstrap.bundle.min.js"></script>
   <script src="js/init.js"></script>
   <script src="js/product-info.js"></script>
+  script>
+  const toggle = document.getElementById('modo-oscuro');
+  toggle.addEventListener('change', () => {
+    document.body.classList.toggle('dark-mode');
+    localStorage.setItem('darkMode', document.body.classList.contains('dark-mode'));
+  });
+
+  if (localStorage.getItem('darkMode') === 'true') {
+    document.body.classList.add('dark-mode');
+    document.getElementById('modo-oscuro').checked = true;
+  }
+</script>
 </body>
 
 </html>
