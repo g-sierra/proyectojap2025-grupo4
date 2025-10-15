@@ -69,3 +69,96 @@ textarea::placeholder {
 .related-card:hover {
   transform: scale(1.033)
 }
+.navbar-hidden {
+  transform: translateY(-100%);
+  transition: transform 0.3s ease;
+}
+/*Se agrega el botón Switch para activar modo oscuro*/
+footer-switch { /*Contenedor del switch en el footer*/
+  position: absolute;
+  bottom: 10px;
+  right: 10px;
+  z-index: 100;
+}
+footer .container {
+  position: fixed;
+}
+
+/* Contenedor del switch */
+.switch {
+  position: fixed;
+  top: 10px;
+  right: 10px;
+  z-index: 1000;
+  display: inline-block;
+  width: 60px;
+  height: 34px;
+}
+
+/* Oculta el checkbox */
+.switch input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+/* Estilo del slider */
+.slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #ccc;
+  transition: 0.4s;
+  border-radius: 34px;
+}
+/* Botón circular dentro del slider */
+.slider:before {
+  position: absolute;
+  content: "";
+  height: 26px;
+  width: 26px;
+  left: 4px;
+  bottom: 4px;
+  background-color: white;
+  transition: 0.4s;
+  border-radius: 50%;
+}
+
+/* Cuando está activado */
+input:checked + .slider {
+  background-color: rgba(5, 27, 17, 1);
+}
+
+input:checked + .slider:before {
+  transform: translateX(26px);
+}
+
+/*Modo oscuro*/
+/* Fondo oscuro general */
+body.dark-mode {
+  background: linear-gradient(to bottom right, rgba(8, 43, 27, 1), rgba(15, 81, 50, 1), rgba(25, 135, 84, 1));
+  color: white;
+}
+
+/*Aplicar modo oscuro a los contenedores*/
+body.dark-mode .container:not(.comentario-blanco) {
+  background-color: rgba(7, 25, 16, 1) !important;
+  color: white !important;
+}
+
+/*Aplicar fondo oscuro a tarjetas relacionadas*/
+body.dark-mode .galeria,
+body.dark-mode .related-card,
+body.dark-mode .producto {
+  background-color: rgba(7, 25, 16, 1) !important;
+  color: white !important;
+}
+
+/*Para que el contenedor de comentarios se mantenga en blanco*/
+body.dark-mode .comentario-blanco {
+  background-color: white !important;
+  color: black !important;
+}
