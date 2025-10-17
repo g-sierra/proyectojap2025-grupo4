@@ -17,6 +17,47 @@
     .btn-green { background: #1b7a3d; color: #fff; border: none; }
     .label-small { font-size: 0.9rem; color:#444; margin-bottom:6px; display:block; }
     input.form-control { border: 1px solid #1b7a3d; border-radius:6px; }
+    .perfil-title { color: black; font-weight:400; }
+    /* In dark mode, Mi Perfil should be color #1b7a3d */
+    body.dark-mode .perfil-title { color: #1b7a3d !important; }
+  </style>
+  <!-- Page-only footer dark-mode: only colors change, layout must stay identical -->
+  <style>
+    /* ONLY colors should change in dark mode for the footer; layout must be identical */
+    body.dark-mode footer {
+      background-color: rgba(5, 27, 17, 1) !important;
+      color: #1b7a3d !important;
+      text-align: left !important; /* force left alignment to match original */
+    }
+
+    /* Force container to behave like normal flow (Bootstrap default) so positions don't shift */
+    body.dark-mode footer .container {
+      display: block !important;
+      width: auto !important;
+      padding-left: 0 !important;
+      padding-right: 0 !important;
+      text-align: left !important;
+    }
+
+    /* Preserve bootstrap float behavior explicitly */
+    body.dark-mode footer .container .float-end {
+      float: right !important;
+      margin-left: 0 !important;
+    }
+
+    /* Keep the non-floated paragraph in normal flow at the left */
+    body.dark-mode footer .container p:not(.float-end) {
+      float: none !important;
+      display: inline-block !important;
+      margin: 0 !important;
+      vertical-align: middle !important;
+    }
+
+    /* Links: only color changes */
+    body.dark-mode footer a {
+      color: #1b7a3d !important;
+      text-decoration: underline !important;
+    }
   </style>
 </head>
 
@@ -37,7 +78,7 @@
       <div class="collapse navbar-collapse" id="navbarNav">
         <ul class="navbar-nav w-100 justify-content-between align-items-center">
           <li class="nav-item"><a class="nav-link" href="index.html">Inicio</a></li>
-          <li class="nav-item"><a class="nav-link" href="categories.html">Categor	as</a></li>
+          <li class="nav-item"><a class="nav-link" href="categories.html">Categorías</a></li>
           <li class="nav-item"><a class="nav-link" href="sell.html">Vender</a></li>
         </ul>
       </div>
@@ -62,7 +103,7 @@
           </div>
 
           <div class="col-md-9">
-            <h3 class="text-center mb-3">Mi Perfil</h3>
+            <h3 class="text-center mb-3 perfil-title">Mi Perfil</h3>
             <form id="profileForm" onsubmit="return false;">
               <div class="mb-2 small text-muted">Usuario</div>
 
@@ -99,10 +140,10 @@
     </div>
   </main>
 
-  <footer class="py-3">
+  <footer class="py-3" style="text-align:left;">
     <div class="container">
-      <p class="float-end"><a href="#">Volver arriba</a></p>
-      <p>Este sitio forma parte de <a href="https://jovenesaprogramar.edu.uy/" target="_blank">Jovenes a Programar</a></p>
+      <p class="float-end" style="float:right;"><a href="#">Volver arriba</a></p>
+      <p style="margin:0; display:inline-block;">Este sitio forma parte de <a href="https://jovenesaprogramar.edu.uy/" target="_blank">Jovenes a Programar</a></p>
     </div>
   </footer>
 
