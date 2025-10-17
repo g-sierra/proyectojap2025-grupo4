@@ -63,15 +63,23 @@ body {
   height: auto;              
   margin: 0 auto 20px auto;  
 }
+.footer-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 20px;
+}
 
+footer a {
+  color: white;
+}
+
+/*Modo oscuro*/
 footer-switch { /*Contenedor del switch en el footer*/
   position: absolute;
   bottom: 10px;
   right: 10px;
   z-index: 100;
-}
-footer .container {
-  position: relative;
 }
 
 /* Contenedor del switch */
@@ -81,6 +89,7 @@ footer .container {
   width: 60px;
   height: 34px;
 }
+
 /* Oculta el checkbox */
 .switch input {
   opacity: 0;
@@ -121,17 +130,19 @@ input:checked + .slider {
 input:checked + .slider:before {
   transform: translateX(26px);
 }
-/*Modo oscuro*/
+
 body.dark-mode .login-box {
   background-color: rgba(117, 183, 152, 1);
   color: #000000;
   border: 2px solid #0c0c0c;
   box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.4);
 }
+
 body.dark-mode {
   background: linear-gradient(to bottom right, rgba(8, 43, 27, 1), rgba(10, 54, 34, 1));
   color: #000000;
 }
+
 body.dark-mode .form-control {
   background-color: #1e1e1e;
   color: #f1f1f1;
