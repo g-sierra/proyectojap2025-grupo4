@@ -20,6 +20,19 @@
       lastName.value = data.lastName || '';
       email.value = data.email || '';
       phone.value = data.phone || '';
+
+      // Cargar imagen si existe
+      if(data.avatar) {
+        avatar.innerHTML = '';
+        const img = document.createElement('img');
+        img.src = data.avatar;
+        img.style.width = '120px';
+        img.style.height = '120px';
+        img.style.objectFit = 'cover';
+        img.style.borderRadius = '50%';
+        avatar.appendChild(img);
+      }
+
       return true;
     }catch(e){
       console.error('Error parsing local profile', e);
@@ -36,15 +49,17 @@
     }
   }
 
-  // Preview de la imagen (NO se guarda en localStorage)
+  // Preview de la imagen y guardar en variable
+   let currentAvatar = null;
   fileInput.addEventListener('change', function(ev){
     const file = ev.target.files && ev.target.files[0];
     if(!file) return;
     const reader = new FileReader();
     reader.onload = function(e){
+      currentAvatar = e.target.result; // Guardar base64
       avatar.innerHTML = '';
       const img = document.createElement('img');
-      img.src = e.target.result;
+      img.src = currentAvatar;
       img.style.width = '120px';
       img.style.height = '120px';
       img.style.objectFit = 'cover';
@@ -54,13 +69,14 @@
     reader.readAsDataURL(file);
   });
 
-  // Guardar en localStorage (sin imagen)
+  // Guardar en localStorage
   saveBtn.addEventListener('click', function(){
     const payload = {
       firstName: firstName.value.trim(),
       lastName: lastName.value.trim(),
       email: email.value.trim(),
       phone: phone.value.trim(),
+      avatar: currentAvatar, // GUARDAR IMAGEN
       updatedAt: new Date().toISOString()
     };
     localStorage.setItem(KEY, JSON.stringify(payload));
@@ -71,5 +87,11 @@
   // Inicialización
   if(!loadFromLocal()){
     preloadEmailFromQuery();
+  } else {
+    // Si hay datos guardados, cargar la imagen también
+    const savedData = JSON.parse(localStorage.getItem(KEY));
+    if(savedData && savedData.avatar) {
+      currentAvatar = savedData.avatar;
+    }
   }
 })();
