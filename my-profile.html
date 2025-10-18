@@ -14,13 +14,134 @@
     body { background: #eaf6ef; }
     .profile-card { background: #fff; border-radius: 8px; padding: 28px; box-shadow: 0 2px 0 rgba(0,0,0,.05); }
     .avatar { width: 120px; height: 120px; border-radius: 50%; background: #cfcfcf; display:flex; align-items:center; justify-content:center; overflow:hidden; }
-    .btn-green { background: #1b7a3d; color: #fff; border: none; }
+    /* Navbar in light mode for this page: dark green #051B11 */
+    .navbar {
+      background-color: #051B11 !important;
+    }
+    .navbar .navbar-brand,
+    .navbar .nav-link {
+      color: #ffffff !important;
+    }
+    /* In dark mode, only change colors for the profile card */
+    body.dark-mode .profile-card {
+      background-color: #071910 !important;
+      color: #e6ffe6 !important;
+    }
+    body.dark-mode .avatar {
+      background-color: #cfcfcf !important;
+    }
+    /* SVG/avatar inner shapes contrast */
+    body.dark-mode .avatar svg { fill: #dfffe4 !important; }
+      /* Labels (Nombre, Apellido, Email, Teléfono) should be white in dark mode */
+      body.dark-mode .label-small {
+        color: #ffffff !important;
+      }
+      /* Status text should be light for readability */
+      body.dark-mode #status {
+        color: #071910 !important;
+        font-weight:600 !important;
+      }
+    .btn-green { background: #1b7a3d; color: #071910; border: none; }
     .label-small { font-size: 0.9rem; color:#444; margin-bottom:6px; display:block; }
     input.form-control { border: 1px solid #1b7a3d; border-radius:6px; }
     .perfil-title { color: black; font-weight:400; }
+
     /* In dark mode, Mi Perfil should be color #1b7a3d */
-    body.dark-mode .perfil-title { color: #1b7a3d !important; }
+    body.dark-mode .perfil-title { color: #fff !important; }
+    /* Removed size overrides here so sizing is controlled by the base .profile-card rule */
   </style>
+  <!-- Strong override: make .profile-card identical dimensions and box-shadow in dark-mode -->
+  <style>
+    /* Keep dark-mode color overrides only (sizes defined in .profile-card) */
+    body.dark-mode .profile-card {
+      background-color: #0F5132 !important;
+      color: #e6ffe6 !important;
+    }
+  </style>
+  <!-- Normalize .profile-card & .avatar in both modes so sizes are identical -->
+  <style>
+    .profile-card {
+      box-sizing: border-box !important;
+      width: 100% !important;
+      max-width: 980px !important;
+      padding: 28px !important;
+      border-radius: 8px !important;
+      margin-left: auto !important;
+      margin-right: auto !important;
+      box-shadow: 0 2px 0 rgba(0,0,0,.05) !important;
+      background-color: #fff !important;
+      color: #000 !important;
+    }
+    /* avatar fixed dimensions */
+    .avatar {
+      width: 120px !important;
+      height: 120px !important;
+    }
+    /* No size/box-model overrides here; base .profile-card controls sizing */
+    body.dark-mode .avatar { width: 120px !important; height: 120px !important; }
+  </style>
+  <!-- Final visual tweaks to exactly match dark-mode screenshot (colors only) -->
+  <style>
+    /* Page background in dark mode (deep green gradient) */
+    body.dark-mode {
+      background: linear-gradient(to bottom right, rgba(8,43,27,1), rgba(15,81,50,1), rgba(25,135,84,1)) !important;
+      color: #e6ffe6 !important;
+    }
+
+    /* Keep the outer container transparent so only the card shows its bg */
+    main > .container, body.dark-mode main > .container {
+      background: transparent !important;
+    }
+
+    /* Make any .container transparent unless it explicitly has class .comentario-blanco */
+    .container:not(.comentario-blanco) {
+      background-color: transparent !important;
+    }
+
+    /* Card in dark mode: ONLY colors should change (keep sizes identical) */
+    body.dark-mode .profile-card {
+      background-color: rgba(2,10,8,0.95) !important; /* almost black/green */
+      color: #e6ffe6 !important;
+      /* Keep sizing identical to light mode (padding/border-radius/max-width/box-shadow)
+         box-sizing is border-box so borders won't change layout; avoid adding borders here */
+      padding: 28px !important;
+      border-radius: 8px !important;
+      max-width: 980px !important;
+      box-shadow: 0 2px 0 rgba(0,0,0,.05) !important;
+      border: none !important;
+    }
+
+    /* Inputs should remain white like in the screenshot */
+    input.form-control, textarea.form-control {
+      background-color: #ffffff !important;
+      color: #071910 !important;
+    }
+    body.dark-mode input.form-control, body.dark-mode textarea.form-control {
+      background-color: #ffffff !important;
+      color: #0F5132 !important;
+    }
+
+    /* Avatar keeps neutral gray fill for contrast */
+    .avatar { background: #cfcfcf !important; }
+    body.dark-mode .avatar { background: #bfc6c9 !important; }
+
+    /* Ensure the title and labels have readable colors */
+    body.dark-mode .perfil-title { color: #ffffff !important; font-weight:400 !important; }
+    body.dark-mode .label-small { color: #ffffff !important; }
+  </style>
+    <!-- Ensure the page container matches the page background (no white box) -->
+    <style>
+      /* Target the main container that wraps the profile card on this page */
+      main > .container {
+        background: transparent !important;
+        background-color: transparent !important;
+      }
+      /* Same for dark mode — keep container transparent */
+      body.dark-mode main > .container {
+        background: transparent !important;
+        background-color: transparent !important;
+      }
+    </style>
   <!-- Page-only footer dark-mode: only colors change, layout must stay identical -->
   <style>
     /* ONLY colors should change in dark mode for the footer; layout must be identical */
@@ -64,15 +185,11 @@
 <body>
   <nav class="navbar navbar-expand-lg navbar-dark bg-dark p-1">
     <div class="container">
-      <div class="d-flex align-items-center">
-      <a class="navbar-brand me-auto" href="index.html">
-      <img src="img/Natura--Logo.png" alt="Logo NaturaSell" style="width: 120px; height: auto;">
-    </a>
+      <a class="navbar-brand" href="index.html">eMercado</a>
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
         aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
-      </div>
       <div class="d-flex align-items-center gap-3 ms-auto text-light">
       <label class="switch mb-0">
       <input type="checkbox" id="modo-oscuro">
@@ -81,6 +198,7 @@
         </div>
       <div class="collapse navbar-collapse" id="navbarNav">
         <ul class="navbar-nav w-100 justify-content-between align-items-center">
+          <li class="nav-item"><a class="nav-link" href="index.html">Inicio</a></li>
           <li class="nav-item"><a class="nav-link" href="categories.html">Categorías</a></li>
           <li class="nav-item"><a class="nav-link" href="sell.html">Vender</a></li>
         </ul>
