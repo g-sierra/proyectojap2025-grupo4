@@ -63,10 +63,29 @@ body {
   height: auto;              
   margin: 0 auto 20px auto;  
 }
+
+.footer {
+  width: 100%;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  background-color: rgba(25, 135, 84, 1);
+  padding: 10px 20px;
+  z-index: 1000;
+}
+
+.footer-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+}
+
 .footer-center {
   flex: 1;
   text-align: center;
   font-size: 14px;
+  color: white;
 }
 
 .footer-right {
@@ -77,8 +96,14 @@ body {
 
 .footer-right a {
   color: white;
+  text-decoration: none;
   font-size: 14px;
 }
+
+footer .container {
+  position: relative;
+}
+
 footer-switch { /*Contenedor del switch en el footer*/
   position: absolute;
   bottom: 10px;
