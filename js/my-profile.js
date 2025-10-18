@@ -3,6 +3,7 @@
   const KEY = 'myProfile_v1';
   const fileInput = document.getElementById('file-input');
   const avatar = document.getElementById('avatar');
+  const userNameDiv = document.getElementById('username');
   const firstName = document.getElementById('firstName');
   const lastName = document.getElementById('lastName');
   const email = document.getElementById('email');
@@ -93,5 +94,11 @@
     if(savedData && savedData.avatar) {
       currentAvatar = savedData.avatar;
     }
+  }
+
+  // Mostrar el usuario ingresado
+  const userName = localStorage.getItem('usuario') || "";
+  if (userName) {
+    userNameDiv.textContent = userName;
   }
 })();
