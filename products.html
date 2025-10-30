@@ -84,7 +84,6 @@
       </div>
     </div>
 
-    /*Buscador*/
     <div class="row mb-3">
       <div class="col-md-6 offset-md-6">
         <input type="search" id="searchInput" class="form-control" placeholder="Buscar productos...">
@@ -114,8 +113,7 @@
   <script src="js/init.js"></script>
   <script src="js/products.js"></script>
 
-  /*Búsqueda en tiempo real*/
-  <script>
+  <script> 
     document.addEventListener("DOMContentLoaded", () => {
       const searchInput = document.getElementById("searchInput");
       const galeria = document.getElementById("galeria");
@@ -131,7 +129,7 @@
           card.style.display = matches ? "block" : "none";
         });
       });
-    });
+    }); 
            /*Modo oscuro*/
   const toggle = document.getElementById('modo-oscuro');
   toggle.addEventListener('change', () => {
