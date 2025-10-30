@@ -223,3 +223,33 @@ async function main() {
 
 // Ejecutar la funcion principal al cargar la página
 document.addEventListener("DOMContentLoaded", main);
+
+// Funcionalidad del botón "agregar al carrito"
+document.addEventListener("DOMContentLoaded", () => {
+  const botonCarrito = document.getElementById("botonCarrito");
+
+  botonCarrito.addEventListener("click", () => {
+    // Obtener los datos del producto desde el DOM
+    const product = {
+      id: localStorage.getItem("productID"), 
+      name: document.getElementById("product-name").textContent,
+      image: document.querySelector("#img-container img")?.src || "", 
+      currency: "USD", 
+      unitCost: parseInt(document.getElementById("product-price").textContent.replace(/\D/g, "")),
+      count: 1
+    };
+
+    let cart = JSON.parse(localStorage.getItem("cart")) || [];
+
+    const existing = cart.find(item => item.id === product.id);
+    if (!existing) {
+      cart.push(product);
+    }
+
+    // Guardar en localStorage
+    localStorage.setItem("cart", JSON.stringify(cart));
+
+    // Redirigir a cart.html
+    window.location.href = "cart.html";
+  });
+});
