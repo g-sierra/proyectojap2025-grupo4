@@ -96,6 +96,7 @@
         if (productIndex !== -1) {
           cart[productIndex].count = newQuantity;
           localStorage.setItem("cart", JSON.stringify(cart));
+          updateCartBadge(); // Actualizar el contador del carrito
           
           // Actualizar el subtotal en la tabla
           const row = event.target.closest('tr');
@@ -125,6 +126,7 @@
         if (productIndex !== -1) {
           cart.splice(productIndex, 1);
           localStorage.setItem("cart", JSON.stringify(cart));
+          updateCartBadge(); // Actualizar el contador del carrito
           
           // Actualizar la interfaz
           event.target.closest('tr').remove();

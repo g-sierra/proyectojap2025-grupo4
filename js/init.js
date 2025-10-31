@@ -42,10 +42,24 @@ let getJSONData = function(url){
 
 
 // Redireccionar al login si la sesión no está iniciada (Desafiate Entrega 1)
+// Función para actualizar el contador del carrito
+function updateCartBadge() {
+    const cart = JSON.parse(localStorage.getItem("cart")) || [];
+    const cartBadge = document.getElementById("cart-count");
+    if (cartBadge) {
+        let totalItems = 0;
+        cart.forEach(item => {
+            totalItems += item.count;
+        });
+        cartBadge.textContent = totalItems;
+        cartBadge.style.display = totalItems > 0 ? "inline" : "none";
+    }
+}
+
 document.addEventListener("DOMContentLoaded", () => {
     let usuario = localStorage.getItem("usuario");
     if (!usuario){
-    window.location.href = "login.html";
+        window.location.href = "login.html";
     }
 
     // Agregar el nombre de usuario a la barra de navegación (Desafiate Entrega 2)
@@ -55,5 +69,8 @@ document.addEventListener("DOMContentLoaded", () => {
     <li class="nav-item">
       <a class="nav-link${isProfile ? " active" : ""}" href="my-profile.html">${usuario}</a>
     </li>
-    `
+    `;
+
+    // Actualizar el contador del carrito al cargar la página
+    updateCartBadge();
 });
