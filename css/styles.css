@@ -66,6 +66,15 @@ footer a:hover {
   color: #ffffff !important;
 }
 
+.cart-badge {
+  font-size: 0.75rem;
+  padding: 0.25em 0.6em;
+  border-radius: 50%;
+  position: relative;
+  top: -1px;
+  margin-left: 4px;
+}
+
 .form-control{
   color: rgb(13, 202, 13);
 }
