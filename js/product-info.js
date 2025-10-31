@@ -157,11 +157,6 @@ async function main() {
     // Mostrar comentarios
     const comments = await getProductComments();
     showProductComments(comments);
-    
-    // Manejar click en boton del carrito
-    botonCarrito.addEventListener("click", () => {
-        alert("Funcionalidad en desarrollo");
-    })
 
     // Manejar el envío del formulario de calificación y comentario
     const ratingForm = document.getElementById("rating-form-footer");
