@@ -39,6 +39,10 @@
         </ul>
       </div>
     </div>
+    <label class="switch">
+        <input type="checkbox" id="modo-oscuro">
+        <span class="slider round"></span>
+      </label>
   </nav>
   <main class="py-4">
     <div class="container">
@@ -144,6 +148,25 @@
   <script src="js/bootstrap.bundle.min.js"></script>
   <script src="js/init.js"></script>
   <script src="js/cart.js"></script>
+    <script>
+  document.addEventListener("DOMContentLoaded", function() {
+    const toggle = document.getElementById("modo-oscuro");
+    const body = document.body;
+
+    if (!toggle) return;
+
+    if (localStorage.getItem("dark-mode") === "true") {
+      body.classList.add("dark-mode");
+      toggle.checked = true;
+    }
+
+    toggle.addEventListener("change", function() {
+      const isDark = toggle.checked;
+      body.classList.toggle("dark-mode", isDark);
+      localStorage.setItem("dark-mode", isDark);
+    });
+  });
+</script>
 </body>
 
 </html>
