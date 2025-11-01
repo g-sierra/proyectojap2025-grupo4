@@ -3,7 +3,7 @@
       object-fit: contain;
     }
     footer {
- position: relative;
+ position: absolute;
     }
     .product-image-mobile {
       max-height: 80px;
