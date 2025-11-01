@@ -36,6 +36,10 @@
           </li>
         </ul>
       </div>
+        <label class="switch">
+        <input type="checkbox" id="modo-oscuro">
+        <span class="slider round"></span>
+        </label>
     </div>
   </nav>
   <main>
@@ -92,6 +96,24 @@
   <script src="js/bootstrap.bundle.min.js"></script>
   <script src="js/index.js"></script>
   <script src="js/init.js"></script>
+  
+  <script>
+  document.addEventListener('DOMContentLoaded', () => {
+    const toggle = document.getElementById('modo-oscuro');
+    const body = document.body;
+
+    if (localStorage.getItem('dark-mode') === 'true') {
+      body.classList.add('dark-mode');
+      toggle.checked = true;
+    }
+
+    toggle.addEventListener('change', () => {
+      const isDark = toggle.checked;
+      body.classList.toggle('dark-mode', isDark);
+      localStorage.setItem('dark-mode', isDark);
+    });
+  });
+</script>
 
 </body>
 </html>
