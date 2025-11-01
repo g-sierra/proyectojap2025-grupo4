@@ -4,7 +4,7 @@ body {
   display: flex;
   flex-direction: column;
   font-family: 'Raleway', sans-serif;
-  background: linear-gradient(to bottom right, #f1fdf6, #d8f3dc);
+  background: linear-gradient (to bottom left, rgba(209, 231, 221, 1), rgba(230, 245, 238, 1));
   color: #0f2e1c;
 }
 
@@ -99,7 +99,7 @@ footer a:hover {
 
 /*Modo oscuro*/
 body.dark-mode {
-  background-color: rgba(10, 60, 40, 1);
+    background: linear-gradient(to bottom right, rgba(8, 43, 27, 1), rgba(15, 81, 50, 1));
 }
 
 body.dark-mode footer {
@@ -227,5 +227,3 @@ body.dark-mode .btn-mas:hover {
   background-color: #064524;
   color: #e0f7e9;
 }
-
-
