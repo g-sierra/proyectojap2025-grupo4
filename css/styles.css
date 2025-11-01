@@ -5,7 +5,12 @@ body {
   flex-direction: column;
   font-family: 'Raleway', sans-serif;
   background: linear-gradient (to bottom left, rgba(209, 231, 221, 1), rgba(230, 245, 238, 1));
-  color: #0f2e1c;
+  color: #000000;
+}
+
+.list-group-item {
+  background-color: (to bottom left, #f8f9fa);
+  border: none;
 }
 
 nav {
@@ -99,17 +104,30 @@ footer a:hover {
 
 /*Modo oscuro*/
 body.dark-mode {
-    background: linear-gradient(to bottom right, rgba(8, 43, 27, 1), rgba(15, 81, 50, 1));
+    background: linear-gradient(to bottom left, rgba(8, 43, 27, 1), rgba(15, 81, 50, 1));
 }
 
 body.dark-mode footer {
   background-color: #0a271d;
+  position: relative;
   color: #e0f7e9;
 }
 
 body.dark-mode footer a,
 body.dark-mode footer p a {
   color: #a5d6a7;
+}
+
+body.dark-mode .list-group-item {
+  background-image: linear-gradient(to bottom right, #468d50, #2f6641);
+  color: #ddd;
+}
+
+body.dark-mode .form-control,
+body.dark-mode .form-select {
+  background-color: #335e49;
+  color: #fff;
+  border-color: #1c301f;
 }
 
 body.dark-mode footer a:hover {
@@ -227,3 +245,5 @@ body.dark-mode .btn-mas:hover {
   background-color: #064524;
   color: #e0f7e9;
 }
+
+
