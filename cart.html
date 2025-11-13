@@ -46,6 +46,8 @@
   </nav>
     <main class="py-4">
     <div class="container">
+      <!-- Contenedor global para mensajes (visible incluso si se oculta #cart-content) -->
+      <div id="checkout-messages-global" class="mt-3"></div>
       <div class="d-flex justify-content-between align-items-center mb-4">
         <h2 class="mb-0">Carrito de Compras</h2>
         <a href="categories.html" class="btn btn-success">
@@ -185,6 +187,41 @@
                             Transferencia bancaria
                           </label>
                         </div>
+                        <!-- Campos para forma de pago: tarjeta -->
+                        <div id="payment-fields" class="mt-3">
+                          <div id="card-fields">
+                            <div class="mb-3">
+                              <label for="card-number" class="form-label">Número de tarjeta</label>
+                              <input type="text" class="form-control" id="card-number" placeholder="1234 5678 9012 3456">
+                            </div>
+                            <div class="mb-3">
+                              <label for="card-holder" class="form-label">Titular</label>
+                              <input type="text" class="form-control" id="card-holder" placeholder="Nombre en tarjeta">
+                            </div>
+                            <div class="row">
+                              <div class="col-6 mb-3">
+                                <label for="card-expiry" class="form-label">Vencimiento</label>
+                                <input type="text" class="form-control" id="card-expiry" placeholder="MM/AA">
+                              </div>
+                              <div class="col-6 mb-3">
+                                <label for="card-cvv" class="form-label">CVV</label>
+                                <input type="text" class="form-control" id="card-cvv" placeholder="123">
+                              </div>
+                            </div>
+                          </div>
+
+                          <!-- Campos para transferencia bancaria -->
+                          <div id="bank-fields" class="d-none">
+                            <div class="mb-3">
+                              <label for="bank-account" class="form-label">Número de cuenta</label>
+                              <input type="text" class="form-control" id="bank-account" placeholder="00012345678">
+                            </div>
+                            <div class="mb-3">
+                              <label for="bank-account-name" class="form-label">Nombre del titular</label>
+                              <input type="text" class="form-control" id="bank-account-name" placeholder="Nombre del titular">
+                            </div>
+                          </div>
+                        </div>
                       </div>
                     </div>
                   </div>
@@ -212,6 +249,8 @@
                 <button class="btn btn-success w-100 mb-2" id="finalizar-compra">
                   <i class="fa fa-check me-2"></i>Finalizar Compra
                 </button>
+                <!-- Contenedor para mensajes de validación / éxito -->
+                <div id="checkout-messages" class="mt-3"></div>
                 
                 <div class="text-center">
                   <small class="text-muted">Compra 100% segura</small>
