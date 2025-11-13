@@ -10,19 +10,31 @@
   <link href="css/font-awesome.min.css" rel="stylesheet">
   <link href="css/bootstrap.min.css" rel="stylesheet">
   <link href="css/styles.css" rel="stylesheet">
+  <style>
+    .cart-badge {
+      font-size: 12px;
+      padding: 2px 6px;
+      border-radius: 50%;
+      font-weight: bold;
+      line-height: 1;
+      min-width: 20px;
+      text-align: center;
+      display: none;
+    }
+  </style>
 </head>
 
 <body>
   <nav class="navbar navbar-expand-lg navbar-dark bg-dark p-1">
     <div class="container">
       <div class="d-flex align-items-center">
-      <a class="navbar-brand me-auto" href="index.html">
-      <img src="img/Natura--Logo.png" alt="Logo NaturaSell" style="width: 120px; height: auto;">
-    </a>
-      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
-        aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
+        <a class="navbar-brand me-auto" href="index.html">
+          <img src="img/Natura--Logo.png" alt="Logo NaturaSell" style="width: 120px; height: auto;">
+        </a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+          aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
       </div>
       <div class="collapse navbar-collapse" id="navbarNav">
         <ul class="navbar-nav w-100 justify-content-between">
@@ -30,7 +42,9 @@
             <a class="nav-link" href="categories.html">Categorías</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="cart.html">Mi Carrito</a>
+            <a class="nav-link" href="cart.html">
+              Mi Carrito <span class="badge bg-primary cart-badge" id="cart-count">0</span>
+            </a>
           </li>
           <li class="nav-item">
             <a class="nav-link" href="sell.html">Vender</a>
@@ -43,6 +57,7 @@
       </label>
     </div>
   </nav>
+
   <main class="pb-5">
     <div class="text-center p-4">
       <h2>Categorías</h2>
@@ -89,14 +104,16 @@
       </div>
     </div>
   </main>
+
   <footer>
     <div class="container">
       <p class="float-end">
         <a href="#">Volver arriba</a>
       </p>
-      <p>Este sitio forma parte de <a href="https://jovenesaprogramar.edu.uy/" target="_blank">Jovenes a Programar</a></p>
+      <p>Este sitio forma parte de <a href="https://jovenesaprogramar.edu.uy/" target="_blank">Jóvenes a Programar</a></p>
     </div>
   </footer>
+
   <div id="spinner-wrapper">
     <div class="lds-ring">
       <div></div>
@@ -105,28 +122,40 @@
       <div></div>
     </div>
   </div>
+
   <script src="js/bootstrap.bundle.min.js"></script>
   <script src="js/init.js"></script>
   <script src="js/categories.js"></script>
   <script>
-  document.addEventListener("DOMContentLoaded", function() {
-    const toggle = document.getElementById("modo-oscuro");
-    const body = document.body;
+    document.addEventListener("DOMContentLoaded", function () {
+      const toggle = document.getElementById("modo-oscuro");
+      const body = document.body;
 
-    if (!toggle) return;
+      if (localStorage.getItem("dark-mode") === "true") {
+        body.classList.add("dark-mode");
+        toggle.checked = true;
+      }
 
-    if (localStorage.getItem("dark-mode") === "true") {
-      body.classList.add("dark-mode");
-      toggle.checked = true;
-    }
+      toggle.addEventListener("change", function () {
+        const isDark = toggle.checked;
+        body.classList.toggle("dark-mode", isDark);
+        localStorage.setItem("dark-mode", isDark);
+      });
 
-    toggle.addEventListener("change", function() {
-      const isDark = toggle.checked;
-      body.classList.toggle("dark-mode", isDark);
-      localStorage.setItem("dark-mode", isDark);
+      // Actualizar badge del carrito
+      function updateCartBadge() {
+        const cart = JSON.parse(localStorage.getItem("cart")) || [];
+        const totalItems = cart.reduce((sum, item) => sum + item.count, 0);
+        const badge = document.getElementById("cart-count");
+        if (badge) {
+          badge.textContent = totalItems;
+          badge.style.display = totalItems > 0 ? "inline-block" : "none";
+        }
+      }
+
+      updateCartBadge();
     });
-  });
-</script>
+  </script>
 </body>
 
 </html>

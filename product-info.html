@@ -11,30 +11,47 @@
   <link href="css/bootstrap.min.css" rel="stylesheet">
   <link href="css/styles.css" rel="stylesheet">
   <link rel="stylesheet" href="css/stylesproduct-info.css">
+  <style>
+    .cart-badge {
+      font-size: 12px;
+      padding: 2px 6px;
+      border-radius: 50%;
+      font-weight: bold;
+      line-height: 1;
+      min-width: 20px;
+      text-align: center;
+      display: none;
+    }
+  </style>
 </head>
 
 <body>
   <nav class="navbar navbar-expand-lg navbar-dark bg-dark p-1">
     <div class="container">
       <div class="d-flex align-items-center">
-      <a class="navbar-brand me-auto" href="index.html">
-      <img src="img/Natura--Logo.png" alt="Logo NaturaSell" style="width: 120px; height: auto;">
-    </a>
-      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
-        aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
+        <a class="navbar-brand me-auto" href="index.html">
+          <img src="img/Natura--Logo.png" alt="Logo NaturaSell" style="width: 120px; height: auto;">
+        </a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+          aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
       </div>
       <div class="d-flex align-items-center gap-3 ms-auto text-light">
-      <label class="switch mb-0">
-      <input type="checkbox" id="modo-oscuro">
-      <span class="slider round"></span>
-      </label>
-        </div>
+        <label class="switch mb-0">
+          <input type="checkbox" id="modo-oscuro">
+          <span class="slider round"></span>
+        </label>
+      </div>
       <div class="collapse navbar-collapse" id="navbarNav">
         <ul class="navbar-nav w-100 justify-content-between">
           <li class="nav-item">
             <a class="nav-link" href="categories.html">Categorías</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="cart.html">
+              Mi Carrito <span class="badge bg-primary cart-badge" id="cart-count">0</span>
+            </a>
           </li>
           <li class="nav-item">
             <a class="nav-link" href="sell.html">Vender</a>
@@ -43,14 +60,14 @@
       </div>
     </div>
   </nav>
+
   <main>
     <div class="container bg-white" id="main-container">
       <div class="row px-3 px-lg-5">
         <div class="col-12 col-lg-6 mt-5 text-center text-lg-start">
           <h1 id="product-name"></h1>
         </div>
-        <div
-          class="col-12 col-lg-6 mt-3 mt-lg-5 d-flex justify-content-center justify-content-lg-end align-items-center">
+        <div class="col-12 col-lg-6 mt-3 mt-lg-5 d-flex justify-content-center justify-content-lg-end align-items-center">
           <span class="fs-2 me-4" id="product-price"></span>
           <button class="btn btn-lg btn-success" id="botonCarrito">Agregar al carrito</button>
         </div>
@@ -60,76 +77,81 @@
           <p class="fs-4" id="product-desc"></p>
         </div>
         <div class="col-12 mt-4">
-          <p class="fs-5 text-muted">
-            Categoría: <span id="product-cat"></span>
-          </p>
-          <p class="fs-5 text-muted">
-            Cantidad de vendidos: <span id="product-soldCount"></span>
-          </p>
+          <p class="fs-5 text-muted">Categoría: <span id="product-cat"></span></p>
+          <p class="fs-5 text-muted">Cantidad de vendidos: <span id="product-soldCount"></span></p>
         </div>
       </div>
       <div class="row px-3 px-lg-5 pb-5 mt-1 g-3" id="img-container"></div>
-     
+
+      <!-- Calificaciones -->
       <div class="container px-3 px-lg-5" id="comments-section"></div>
-      
+
+      <!-- Formulario de calificación -->
       <div class="container bg-white px-3 px-lg-5 pb-5">
         <h5 class="mt-5">Tu opinión sobre el producto</h5>
         <form id="rating-form-footer">
           <div class="star-rating-footer mb-3">
-            <input type="radio" id="footer-star5" name="footer-rating" value="5">
-            <label for="footer-star5" title="Excelente">★</label>
-            <input type="radio" id="footer-star4" name="footer-rating" value="4">
-            <label for="footer-star4" title="Muy bueno">★</label>
-            <input type="radio" id="footer-star3" name="footer-rating" value="3">
-            <label for="footer-star3" title="Bueno">★</label>
-            <input type="radio" id="footer-star2" name="footer-rating" value="2">
-            <label for="footer-star2" title="Regular">★</label>
-            <input type="radio" id="footer-star1" name="footer-rating" value="1">
-            <label for="footer-star1" title="Malo">★</label>
+            <input type="radio" id="footer-star5" name="footer-rating" value="5"><label for="footer-star5" title="Excelente">★</label>
+            <input type="radio" id="footer-star4" name="footer-rating" value="4"><label for="footer-star4" title="Muy bueno">★</label>
+            <input type="radio" id="footer-star3" name="footer-rating" value="3"><label for="footer-star3" title="Bueno">★</label>
+            <input type="radio" id="footer-star2" name="footer-rating" value="2"><label for="footer-star2" title="Regular">★</label>
+            <input type="radio" id="footer-star1" name="footer-rating" value="1"><label for="footer-star1" title="Malo">★</label>
           </div>
           <textarea class="form-control mb-3" rows="4" placeholder="Escribí tu comentario aquí..."></textarea>
           <button type="submit" class="btn btn-success">Enviar</button>
         </form>
       </div>
-    
+
+      <!-- Productos relacionados -->
       <div class="container px-3 px-lg-5 pb-5">
         <h3>Productos relacionados</h3>
         <div id="related-products" class="row mt-2 g-3 d-flex flex-column flex-md-row align-items-center"></div>
       </div>
     </div>
   </main>
+
   <footer>
     <div class="container">
-      <p class="float-end">
-        <a href="#">Volver arriba</a>
-      </p>
-      <p>Este sitio forma parte de <a href="https://jovenesaprogramar.edu.uy/" target="_blank">Jovenes a Programar</a>
-      </p>
+      <p class="float-end"><a href="#">Volver arriba</a></p>
+      <p>Este sitio forma parte de <a href="https://jovenesaprogramar.edu.uy/" target="_blank">Jóvenes a Programar</a></p>
     </div>
   </footer>
+
   <div id="spinner-wrapper">
-    <div class="lds-ring">
-      <div></div>
-      <div></div>
-      <div></div>
-      <div></div>
-    </div>
+    <div class="lds-ring"><div></div><div></div><div></div><div></div></div>
   </div>
+
   <script src="js/bootstrap.bundle.min.js"></script>
   <script src="js/init.js"></script>
   <script src="js/product-info.js"></script>
   <script>
-  const toggle = document.getElementById('modo-oscuro');
-  toggle.addEventListener('change', () => {
-    document.body.classList.toggle('dark-mode');
-    localStorage.setItem('darkMode', document.body.classList.contains('dark-mode'));
-  });
+    document.addEventListener("DOMContentLoaded", () => {
+      // Modo oscuro
+      const toggle = document.getElementById('modo-oscuro');
+      toggle.addEventListener('change', () => {
+        document.body.classList.toggle('dark-mode');
+        localStorage.setItem('darkMode', document.body.classList.contains('dark-mode'));
+      });
 
-  if (localStorage.getItem('darkMode') === 'true') {
-    document.body.classList.add('dark-mode');
-    document.getElementById('modo-oscuro').checked = true;
-  }
-</script>
+      if (localStorage.getItem('darkMode') === 'true') {
+        document.body.classList.add('dark-mode');
+        toggle.checked = true;
+      }
+
+      // Badge dinámico del carrito
+      function updateCartBadge() {
+        const cart = JSON.parse(localStorage.getItem("cart")) || [];
+        const totalItems = cart.reduce((sum, item) => sum + item.count, 0);
+        const badge = document.getElementById("cart-count");
+        if (badge) {
+          badge.textContent = totalItems;
+          badge.style.display = totalItems > 0 ? "inline-block" : "none";
+        }
+      }
+
+      updateCartBadge();
+    });
+  </script>
 </body>
 
 </html>
