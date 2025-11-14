@@ -227,25 +227,6 @@
   <script src="js/dropzone.js"></script>
   <script src="js/init.js"></script>
   <script src="js/sell.js"></script>
-  <script>
-  document.addEventListener("DOMContentLoaded", function() {
-    const toggle = document.getElementById("modo-oscuro");
-    const body = document.body;
-
-    if (!toggle) return;
-
-    if (localStorage.getItem("dark-mode") === "true") {
-      body.classList.add("dark-mode");
-      toggle.checked = true;
-    }
-
-    toggle.addEventListener("change", function() {
-      const isDark = toggle.checked;
-      body.classList.toggle("dark-mode", isDark);
-      localStorage.setItem("dark-mode", isDark);
-    });
-  });
-</script>
+  <script src="js/dark-mode.js"></script>
 </body>
-
 </html>
