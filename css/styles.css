@@ -106,13 +106,24 @@ footer a:hover {
   color: #198754;
   font-style: italic;
 }
-
+.custom-card {
+  background-color: transparent; /* sin fondo */
+  color: #000000;               
+  border: none;
+}
 /*Modo oscuro*/
 body.dark-mode {
   display: flex;
   flex-direction: column;
   min-height: 100vh;
   background: linear-gradient(to bottom left, rgba(8, 43, 27, 1), rgba(15, 81, 50, 1));
+}
+body.dark-mode .custom-card {
+  background-color: #0f3d2e; /* verde oscuro */
+  color: #ffffff;
+  border: none;
+  border-radius: 0.375rem;
+  padding: 1rem;
 }
 
 
