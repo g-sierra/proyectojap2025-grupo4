@@ -132,6 +132,7 @@
   <script src="js/bootstrap.bundle.min.js"></script>
   <script src="js/init.js"></script>
   <script src="js/products.js"></script>
+  <script src="js/dark-mode.js"></script>
 
   <script>
     document.addEventListener("DOMContentLoaded", () => {
@@ -149,18 +150,6 @@
           card.style.display = matches ? "block" : "none";
         });
       });
-
-      // Modo oscuro
-      const toggle = document.getElementById('modo-oscuro');
-      toggle.addEventListener('change', () => {
-        document.body.classList.toggle('dark-mode');
-        localStorage.setItem('darkMode', document.body.classList.contains('dark-mode'));
-      });
-
-      if (localStorage.getItem('darkMode') === 'true') {
-        document.body.classList.add('dark-mode');
-        toggle.checked = true;
-      }
 
       // Badge dinámico del carrito
       function updateCartBadge() {
