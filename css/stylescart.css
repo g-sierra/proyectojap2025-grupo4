@@ -1,10 +1,24 @@
-    .product-image {
+        .product-image {
       max-height: 120px;
       object-fit: contain;
     }
-    footer {
- position: absolute;
-    }
+
+footer {
+  position: relative;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  background-color: #0f3d2e;
+  color: #fff;
+  padding: 1rem;
+  text-align: center;
+}
+
+footer a,
+footer p,
+footer span {
+  color: #ffffff !important;
+}
     .product-image-mobile {
       max-height: 80px;
       object-fit: contain;
@@ -47,6 +61,51 @@
   background-color: #e0f7e9;
   color: #0f3d2e;
 }
+.switch {
+  position: relative;
+  display: inline-block;
+  width: 50px;
+  height: 26px;
+  margin-left: 1rem;
+}
+
+.switch input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #ccc;
+  transition: 0.4s;
+  border-radius: 26px;
+}
+.slider:before {
+  position: absolute;
+  content: "";
+  height: 20px;
+  width: 20px;
+  left: 3px;
+  bottom: 3px;
+  background-color: white;
+  transition: 0.4s;
+  border-radius: 50%;
+}
+
+input:checked + .slider {
+  background-color: rgba(5, 27, 17, 1);
+}
+
+input:checked + .slider:before {
+  transform: translateX(24px);
+}
+
 /*Modo oscuro*/
 body.dark-mode {
   background-color:rgba(8, 43, 27, 1);
@@ -67,7 +126,7 @@ body.dark-mode .remove-btn {
 
 body.dark-mode .quantity-input {
   background-color: #e0f7e9;
-  color: #0f3d2e;
+  color: #050505;
   border: 1px solid #ccc;
   border-radius: 4px;
 }
@@ -121,12 +180,12 @@ body.dark-mode .custom-card {
 
 body.dark-mode .cart-summary {
   background-color: rgba(10, 60, 40, 1);
-  color: #e0f7e9;
+  color: #000000;
   border: none;
 }
 
 body.dark-mode footer {
-  position: fixed;
+  position: relative;
   background-color: #0f3d2e;
   color: #e0f7e9;
 }
@@ -162,4 +221,3 @@ body.dark-mode .btn-mas {
         font-size: 0.9rem;
       }
     }
-  
