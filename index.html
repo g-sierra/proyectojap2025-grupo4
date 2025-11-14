@@ -112,23 +112,9 @@
   <script src="js/bootstrap.bundle.min.js"></script>
   <script src="js/index.js"></script>
   <script src="js/init.js"></script>
+  <script src="js/dark-mode.js"></script>
 
   <script>
-    document.addEventListener('DOMContentLoaded', () => {
-      const toggle = document.getElementById('modo-oscuro');
-      const body = document.body;
-
-      if (localStorage.getItem('dark-mode') === 'true') {
-        body.classList.add('dark-mode');
-        toggle.checked = true;
-      }
-
-      toggle.addEventListener('change', () => {
-        const isDark = toggle.checked;
-        body.classList.toggle('dark-mode', isDark);
-        localStorage.setItem('dark-mode', isDark);
-      });
-
       // Actualizar badge del carrito dinámicamente
       function updateCartBadge() {
         const cart = JSON.parse(localStorage.getItem("cart")) || [];
