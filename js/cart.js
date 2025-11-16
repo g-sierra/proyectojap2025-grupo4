@@ -51,12 +51,15 @@
           cartItems.appendChild(row);
         });
         
-        // Calcular total (subtotal + envío)
+        // Calcular total (subtotal) inicialmente; el envío se calcula después
         const total = subtotal;
-        
-        // Mostrar los totales
+
+        // Mostrar los totales (subtotal provisional)
         subtotalSummary.textContent = formatCurrency(subtotal, cart[0].currency);
         totalSummary.textContent = formatCurrency(total, cart[0].currency);
+
+        // (no llamar aquí a calculateShipping() porque se define más abajo
+        // y usa variables que aún no están inicializadas)
         
         // Agregar event listeners para los cambios en la cantidad
         document.querySelectorAll('.quantity-input').forEach(input => {
@@ -114,6 +117,9 @@
           
           subtotalSummary.textContent = formatCurrency(newSubtotalSum, currency);
           totalSummary.textContent = formatCurrency(newSubtotalSum, currency);
+
+          // Recalcular envío y total final después de cambiar cantidades
+          calculateShipping();
         }
       }
       
@@ -141,6 +147,9 @@
             const currency = cart[0].currency;
             subtotalSummary.textContent = formatCurrency(newSubtotalSum, currency);
             totalSummary.textContent = formatCurrency(newSubtotalSum, currency);
+
+            // Recalcular envío y total final después de eliminar un ítem
+            calculateShipping();
           } else {
             // Si no quedan productos, mostrar mensaje de carrito vacío
             emptyCartMessage.classList.remove("d-none");
@@ -183,6 +192,9 @@
 
       // Escuchar cambios en tipo de envío
       shippingRadios.forEach(r => r.addEventListener('change', calculateShipping));
+
+      // Calcular envío inicialmente ahora que los elementos están definidos
+      calculateShipping();
 
       // Mostrar/ocultar campos de pago según selección
       function togglePaymentFields() {
