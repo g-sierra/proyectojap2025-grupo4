@@ -20,7 +20,19 @@ let hideSpinner = function(){
 let getJSONData = function(url){
     let result = {};
     showSpinner();
-    return fetch(url)
+
+    //obten el token del localStorage
+    const token = localStorage.getItem("token");
+    const headers = {
+      "Content-type": "application/json",
+    };
+
+    //Si hay token, agregarlo al header Authorization
+    if (token) {
+      headers["Authorization"] = `Bearer ${token}`;
+    }
+
+    return fetch(url, {headers})
     .then(response => {
       if (response.ok) {
         return response.json();
@@ -42,8 +54,6 @@ let getJSONData = function(url){
     });
 }
 
-
-// Redireccionar al login si la sesión no está iniciada (Desafiate Entrega 1)
 // Función para actualizar el contador del carrito
 function updateCartBadge() {
     const cart = JSON.parse(localStorage.getItem("cart")) || [];
@@ -58,9 +68,13 @@ function updateCartBadge() {
     }
 }
 
+// Redireccionar al login si la sesión no está iniciada (Desafiate Entrega 1) (Modificado para punto 4 de entrega 8, asi verifica token ademas de usuario)
 document.addEventListener("DOMContentLoaded", () => {
     let usuario = localStorage.getItem("usuario");
-    if (!usuario){
+    let token = localStorage.getItem("token");
+
+
+    if (!usuario && !token) {
         window.location.href = "login.html";
     }
 
