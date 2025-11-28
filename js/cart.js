@@ -315,6 +315,32 @@
             return;
           }
 
+         // Punto 3 desafíate
+        const clienteId = 1;
+        const items = cart.map(p => ({
+        productoId: p.id,
+        cantidad: p.count
+        }));
+
+        fetch('http://localhost:3001/cart', {
+        method: 'POST',
+        headers: {
+        'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({ clienteId, items })
+        })
+       .then(response => {
+       if (!response.ok) throw new Error('Error al enviar el carrito');
+       return response.json();
+       })
+       .then(data => {
+       console.log('Pedido guardado:', data);
+       showSuccess();
+       })
+       .catch(error => {
+       console.error('Error al guardar el pedido:', error);
+       showErrors(['Ocurrió un inconveniente al guardar el pedido. Por favor, vuelva a intentarlo.']);
+       });
           // Si todo está correcto
           showSuccess();
         });
