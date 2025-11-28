@@ -51,15 +51,12 @@
           cartItems.appendChild(row);
         });
         
-        // Calcular total (subtotal) inicialmente; el envío se calcula después
+        // Calcular total (subtotal)
         const total = subtotal;
 
-        // Mostrar los totales (subtotal provisional)
+        // Mostrar los totales 
         subtotalSummary.textContent = formatCurrency(subtotal, cart[0].currency);
         totalSummary.textContent = formatCurrency(total, cart[0].currency);
-
-        // (no llamar aquí a calculateShipping() porque se define más abajo
-        // y usa variables que aún no están inicializadas)
         
         // Agregar event listeners para los cambios en la cantidad
         document.querySelectorAll('.quantity-input').forEach(input => {
@@ -193,7 +190,7 @@
       // Escuchar cambios en tipo de envío
       shippingRadios.forEach(r => r.addEventListener('change', calculateShipping));
 
-      // Calcular envío inicialmente ahora que los elementos están definidos
+      // Calcular envío
       calculateShipping();
 
       // Mostrar/ocultar campos de pago según selección
@@ -243,9 +240,9 @@
   if (target) target.appendChild(wrapper);
   wrapper.scrollIntoView({behavior: 'smooth', block: 'center'});
 
-        // Simular envío ficticio: limpiar carrito
+        // Simular envío
         localStorage.removeItem('cart');
-        // Actualizar UI: mostrar carrito vacío
+        // Mostrar carrito vacío
         document.getElementById('empty-cart-message').classList.remove('d-none');
         document.getElementById('cart-content').classList.add('d-none');
         updateCartBadge();
@@ -318,7 +315,7 @@
             return;
           }
 
-          // Si todo OK, mostrar éxito (envío ficticio)
+          // Si todo está correcto
           showSuccess();
         });
       }
