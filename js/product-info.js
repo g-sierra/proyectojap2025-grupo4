@@ -16,19 +16,23 @@ if (!PRODUCT_ID) {
     console.error("No se encontró productID en localStorage");
     window.location.replace("products.html");
 }
-const DATA_URL = `https://japceibal.github.io/emercado-api/products/${PRODUCT_ID}.json`;
+const DATA_URL = `http://localhost:3001/api/products/${PRODUCT_ID}.json`;
 
 // Funcion para llamar a la API
 async function getProductData() {
     try {
-        const response = await fetch(DATA_URL);
+        const token = localStorage.getItem('token');
+        const response = await fetch(DATA_URL, {
+            headers: {
+                'Authorization': `Bearer ${token}`
+            }
+        });
 
         if (!response.ok) {
             throw new Error(`Error HTTP: ${response.status}`);
         }
 
         const data = await response.json();
-        // console.log(data);
         return data;
 
     } catch (error) {
@@ -67,9 +71,14 @@ function showProductImages(imageArray, productName) {
 const commentsContainer = document.getElementById("comments-section");
 
 async function getProductComments() {
-    const COMMENTS_URL = `https://japceibal.github.io/emercado-api/products_comments/${PRODUCT_ID}.json`;
+    const COMMENTS_URL = `http://localhost:3001/api/products_comments/${PRODUCT_ID}.json`;
     try {
-        const response = await fetch(COMMENTS_URL);
+        const token = localStorage.getItem('token');
+        const response = await fetch(COMMENTS_URL, {
+            headers: {
+                'Authorization': `Bearer ${token}`
+            }
+        });
         if (!response.ok) throw new Error(`HTTP error: ${response.status}`);
         return await response.json();
     } catch (error) {

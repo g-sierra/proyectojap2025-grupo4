@@ -248,7 +248,7 @@
         updateCartBadge();
       }
 
-      // Validación y handler de finalizar compra
+           // Validación y handler de finalizar compra
       const finalizarBtn = document.getElementById('finalizar-compra');
       if (finalizarBtn) {
         finalizarBtn.addEventListener('click', function() {
@@ -315,44 +315,32 @@
             return;
           }
 
-           // Punto 3 desafíate - Enviar carrito al backend
-            const clienteId = 1; // Por ahora hardcodeado ya que la pagina no es tan compleja. En un caso real, obtener del usuario logueado.
-            const items = cart.map(p => ({
-                productoId: p.id,
-                cantidad: p.count,
-                nombre: p.name,
-                precio: p.unitCost
-            }));
+          // Punto 3 desafíate
+const items = cart.map(p => ({
+    productoId: p.id,
+    cantidad: p.count
+}));
 
-            fetch('http://localhost:3001/api/cart', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                    'Authorization': `Bearer ${localStorage.getItem('token')}` // Token para autenticación
-                },
-                body: JSON.stringify({ 
-                    clienteId, 
-                    items,
-                    direccion: {
-                        department: document.getElementById('department')?.value,
-                        locality: document.getElementById('locality')?.value,
-                        street: document.getElementById('street')?.value,
-                        number: document.getElementById('number')?.value,
-                        corner: document.getElementById('corner')?.value
-                    },
-                    envio: document.querySelector('input[name="shippingType"]:checked')?.id,
-                    pago: document.querySelector('input[name="paymentMethod"]:checked')?.id
-                })
-            })
-            .then(response => {
-                if (!response.ok) throw new Error('Error al enviar el carrito');
-                return response.json();
-            })
-            .then(data => {
-                console.log('Pedido guardado:', data);
-                showSuccess(); // Limpiar el carrito y mostrar mensaje de éxito
-            })
-            .catch(error => {
-                console.error('Error al guardar el pedido:', error);
-                showErrors(['Ocurrió un inconveniente al guardar el pedido. Por favor, vuelva a intentarlo.']);
-              });
+fetch('http://localhost:3001/api/cart', {
+    method: 'POST',
+    headers: {
+        'Content-Type': 'application/json',
+        'Authorization': `Bearer ${localStorage.getItem('token')}`
+    },
+    body: JSON.stringify({ items }) // ← Solo enviamos items, NO clienteId
+})
+.then(response => {
+    if (!response.ok) throw new Error('Error al enviar el carrito');
+    return response.json();
+})
+.then(data => {
+    console.log('Pedido guardado:', data);
+    showSuccess();
+})
+.catch(error => {
+    console.error('Error al guardar el pedido:', error);
+    showErrors(['Ocurrió un inconveniente al guardar el pedido. Por favor, vuelva a intentarlo.']);
+      });
+    }); // ← ESTA LÍNEA FALTABA - cierra el addEventListener
+  } // ← ESTA LÍNEA FALTABA - cierra el if (finalizarBtn)
+}); // ← ESTA LÍNEA FALTABA - cierra el DOMContentLoaded

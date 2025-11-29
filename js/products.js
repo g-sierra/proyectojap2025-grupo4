@@ -13,8 +13,12 @@ let productos = [];
 
 // Fetch principal
 const CAT_ID = localStorage.getItem("catID");
-const URL = `https://japceibal.github.io/emercado-api/cats_products/${CAT_ID}.json`;
-fetch(URL)
+const URL = `http://localhost:3001/api/cats_products/${CAT_ID}.json`;
+fetch(URL, {
+    headers: {
+        'Authorization': `Bearer ${localStorage.getItem('token')}`
+    }
+})
     .then((response) => response.json())
     .then((data) => {
         // Esto muestra el titulo de la categoría
