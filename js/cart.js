@@ -327,7 +327,7 @@ fetch('http://localhost:3001/api/cart', {
         'Content-Type': 'application/json',
         'Authorization': `Bearer ${localStorage.getItem('token')}`
     },
-    body: JSON.stringify({ items }) // ← Solo enviamos items, NO clienteId
+    body: JSON.stringify({ items }) 
 })
 .then(response => {
     if (!response.ok) throw new Error('Error al enviar el carrito');
@@ -341,6 +341,6 @@ fetch('http://localhost:3001/api/cart', {
     console.error('Error al guardar el pedido:', error);
     showErrors(['Ocurrió un inconveniente al guardar el pedido. Por favor, vuelva a intentarlo.']);
       });
-    }); // ← ESTA LÍNEA FALTABA - cierra el addEventListener
-  } // ← ESTA LÍNEA FALTABA - cierra el if (finalizarBtn)
-}); // ← ESTA LÍNEA FALTABA - cierra el DOMContentLoaded
+    });
+  } 
+}); 
