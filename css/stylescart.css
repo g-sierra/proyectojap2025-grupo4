@@ -1,0 +1,223 @@
+        .product-image {
+      max-height: 120px;
+      object-fit: contain;
+    }
+
+footer {
+  position: relative;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  background-color: #0f3d2e;
+  color: #fff;
+  padding: 1rem;
+  text-align: center;
+}
+
+footer a,
+footer p,
+footer span {
+  color: #ffffff !important;
+}
+    .product-image-mobile {
+      max-height: 80px;
+      object-fit: contain;
+      margin-bottom: 0.5rem;
+    }
+
+    #ir-a-comprar {
+        border-color: #000000;
+        background-color: #019f55;
+      color: #ffffff;
+    }
+    
+    .quantity-input {
+      width: 70px;
+    }
+    
+    .empty-cart-icon {
+      font-size: 4rem;
+      color: #dee2e6;
+    }
+    
+    .cart-summary {
+      background-color: #f8f9fa;
+      border-radius: 0.375rem;
+      padding: 1.5rem;
+    }
+    
+    .remove-btn {
+      padding: 0.25rem 0.5rem;
+    }
+
+    .custom-card {
+  background-color: rgba(10, 60, 40, 1);
+  color: #ffffff;
+  border: none;
+}
+
+.table th,
+.table td {
+  background-color: #e0f7e9;
+  color: #0f3d2e;
+}
+.switch {
+  position: relative;
+  display: inline-block;
+  width: 50px;
+  height: 26px;
+  margin-left: 1rem;
+}
+
+.switch input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #ccc;
+  transition: 0.4s;
+  border-radius: 26px;
+}
+.slider:before {
+  position: absolute;
+  content: "";
+  height: 20px;
+  width: 20px;
+  left: 3px;
+  bottom: 3px;
+  background-color: white;
+  transition: 0.4s;
+  border-radius: 50%;
+}
+
+input:checked + .slider {
+  background-color: rgba(5, 27, 17, 1);
+}
+
+input:checked + .slider:before {
+  transform: translateX(24px);
+}
+
+/*Modo oscuro*/
+body.dark-mode {
+  background-color:rgba(8, 43, 27, 1);
+  color: #e0f7e9;
+}
+
+body.dark-mode .navbar{
+  background-color: rgba(5, 27, 17, 1)!important;
+  color: #e0f7e9;
+}
+
+body.dark-mode .remove-btn {
+  background-color: #ffffff;
+  color: #ac2424;
+  border: none;
+  padding: 0.25rem 0.5rem;
+}
+
+body.dark-mode .quantity-input {
+  background-color: #e0f7e9;
+  color: #050505;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+body.dark-mode .table th,
+body.dark-mode .table td {
+  background-color: rgba(10, 60, 40, 1);
+  color: #e0f7e9;
+}
+
+.card {
+  border-radius: 0.375rem;
+  box-shadow: none !important;
+  border: none;
+}
+
+/*Modo oscuro a las columnas*/
+body.dark-mode .table th,
+body.dark-mode .table td {
+  background-color: rgba(10, 60, 40, 1);
+  color: #e0f7e9;
+}
+
+body.dark-mode .table td:nth-child(1),
+body.dark-mode .table td:nth-child(2),
+body.dark-mode .table td:nth-child(3),
+body.dark-mode .table th:nth-child(1),
+body.dark-mode .table th:nth-child(2),
+body.dark-mode .table th:nth-child(3) {
+  background-color: rgba(10, 60, 40, 1);
+  color: #e0f7e9;
+
+}
+
+body.dark-mode .bg-light,
+body.dark-mode .bg-white {
+  background-color: rgba(10, 60, 40, 1) !important;
+  color: #e0f7e9 !important;
+}
+
+body.dark-mode .album {
+  background-color: rgba(8, 43, 27, 1);
+}
+
+body.dark-mode .custom-card {
+  background-color: rgba(10, 60, 40, 1);
+  color: #ffffff;
+  border: 1px solid rgba(10, 60, 40, 1);
+  border-radius: 0.375rem;
+}
+
+body.dark-mode .cart-summary {
+  background-color: rgba(10, 60, 40, 1);
+  color: #000000;
+  border: none;
+}
+
+body.dark-mode footer {
+  position: relative;
+  background-color: #0f3d2e;
+  color: #e0f7e9;
+}
+
+body.dark-mode .btn-mas {
+  background-color: #0f3d2e;
+  color: #ffffff;
+}
+    @media (max-width: 576px) {
+      .table-responsive {
+        font-size: 0.875rem;
+      }
+      
+      .product-image {
+        max-height: 80px;
+      }
+      
+      .quantity-input {
+        width: 60px;
+      }
+      
+      .table th, .table td {
+        padding: 0.5rem;
+      }
+      
+      .mobile-product-info {
+        text-align: center;
+      }
+    }
+    
+    @media (min-width: 577px) and (max-width: 768px) {
+      .table-responsive {
+        font-size: 0.9rem;
+      }
+    }
